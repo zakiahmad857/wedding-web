@@ -41,7 +41,8 @@ export default {
   outline: none;
   background-color: transparent;
   border-bottom: 1px solid $color-black-3;
-  padding: 1rem;
+  padding: 0.875rem;
+  letter-spacing: 1px;
   font-family: 'Darker Grotesque', sans-serif;
   font-size: 2rem;
   text-align: center;

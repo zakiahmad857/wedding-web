@@ -39,6 +39,20 @@ export default {
   height: 90%;
   border-radius: 0.625rem;
   box-shadow: 0 0.625rem 1.125rem rgba(0, 0, 0, 0.15);
+  display: none;
+  transform: scale(0);
+  transition: transform 0.5s 2s;
+
+  &.showing {
+    display: unset;
+    transition: transform 0.5s;
+  }
+
+  &.showed {
+    transition: transform 0.5s 2s;
+    display: flex;
+    transform: scale(1);
+  }
 }
 
 .input-custom {

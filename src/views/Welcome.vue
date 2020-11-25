@@ -2,7 +2,9 @@
   <div class="welcome">
     <div
       class="welcome-step-1"
-      :class="{ 'fade-out': state.currentStep !== 'step-1' }"
+      :class="{
+        'fade-out': state.currentStep !== 'step-1'
+      }"
     >
       <div class="bg"></div>
       <div class="bg-1"></div>
@@ -10,10 +12,19 @@
         src="../assets/images/image-welcome.svg"
         alt="welcome"
         class="welcome-img"
+        :class="{
+          show: state.currentStep === 'step-1',
+          hide: state.currentStep === ''
+        }"
       />
     </div>
     <div class="welcome-step-2">
-      <GreetingCard />
+      <GreetingCard
+        :class="{
+          showing: state.currentStep === 'step-2-showing',
+          showed: state.currentStep === 'step-2'
+        }"
+      />
     </div>
   </div>
 </template>
@@ -27,14 +38,21 @@ export default {
   components: { GreetingCard },
   setup() {
     const state = reactive({
-      currentStep: 'step-1'
+      currentStep: ''
     });
 
     return { state };
   },
   mounted() {
     setTimeout(() => {
-      this.state.currentStep = 'step-2';
+      this.state.currentStep = 'step-1';
+    }, 100);
+
+    setTimeout(() => {
+      this.state.currentStep = 'step-2-showing';
+      setTimeout(() => {
+        this.state.currentStep = 'step-2';
+      }, 300);
     }, 3000);
   }
 };
@@ -50,6 +68,15 @@ export default {
 .welcome-img {
   height: 90vh;
   width: auto;
+  transition: transform 1s ease-out;
+
+  &.hide {
+    transform: scale(0);
+  }
+
+  &.show {
+    transform: scale(1);
+  }
 }
 
 .welcome-step-1 {
