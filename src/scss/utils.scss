@@ -1,0 +1,17 @@
+@for $i from 1 to 6 {
+  .mb-#{$i} {
+    margin-bottom: #{$i * 0.625}rem;
+  }
+
+  .mt-#{$i} {
+    margin-bottom: #{$i * 0.625}rem;
+  }
+
+  .mr-#{$i} {
+    margin-bottom: #{$i * 0.625}rem;
+  }
+
+  .ml-#{$i} {
+    margin-bottom: #{$i * 0.625}rem;
+  }
+}
