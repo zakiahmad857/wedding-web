@@ -15,3 +15,14 @@
     margin-bottom: #{$i * 0.625}rem;
   }
 }
+
+.overlay-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  filter: blur(20px);
+  z-index: 900;
+  background-color: rgba(white, 0.5);
+}

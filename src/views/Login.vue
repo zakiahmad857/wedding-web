@@ -1,7 +1,6 @@
 <template>
   <div class="login">
-    <div class="bg-top"></div>
-    <div class="bg-bottom"></div>
+    <decoration />
     <div class="login__container">
       <h1 class="heading-0">Selamat Datang</h1>
       <h2 class="mb-1">Masukan ID Guest yang didapat dari Undangan</h2>
@@ -49,12 +48,14 @@ import { useRoute, useRouter } from 'vue-router';
 import Button from '@/components/Button.vue';
 import Input from '@/components/Input.vue';
 import { reactive, watch } from 'vue';
+import Decoration from '../components/Decoration.vue';
 
 export default {
   name: 'Home',
   components: {
     Button,
-    Input
+    Input,
+    Decoration
   },
   setup() {
     const route = useRoute();

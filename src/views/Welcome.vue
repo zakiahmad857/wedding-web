@@ -18,11 +18,29 @@
         }"
       />
     </div>
-    <div class="welcome-step-2">
+    <div
+      :class="{ showed: state.currentStep === 'step-2' }"
+      class="welcome-step-2"
+    >
       <GreetingCard
+        @send="handleSend"
         :class="{
           showing: state.currentStep === 'step-2-showing',
-          showed: state.currentStep === 'step-2'
+          showed: state.currentStep === 'step-2',
+          collapsing: state.currentStep === 'step-2-collapsing'
+        }"
+      />
+    </div>
+    <div
+      :class="{ showed: state.currentStep === 'step-3' }"
+      class="welcome-step-3"
+    >
+      <Thankyou
+        @done="handleDone"
+        :class="{
+          showing: state.currentStep === 'step-3-showing',
+          showed: state.currentStep === 'step-3',
+          collapsing: state.currentStep === 'step-3-collapsing'
         }"
       />
     </div>
@@ -31,29 +49,47 @@
 
 <script>
 import { reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 import GreetingCard from '../components/GreetingCard.vue';
+import Thankyou from '../components/Thankyou.vue';
 
 export default {
   name: 'Welcome',
-  components: { GreetingCard },
+  components: { GreetingCard, Thankyou },
   setup() {
     const state = reactive({
       currentStep: ''
     });
+    const route = useRoute();
+    const router = useRouter();
 
-    return { state };
+    async function handleSend(_e) {
+      state.currentStep = 'step-2-collapsing';
+      await promiseTimeOut(1000);
+      state.currentStep = 'step-3-showing';
+      await promiseTimeOut(300);
+      state.currentStep = 'step-3';
+    }
+
+    async function handleDone(_e) {
+      state.currentStep = 'step-3-collapsing';
+      await promiseTimeOut(500).then(() => {
+        let lang;
+        route.path.startsWith('/id') ? (lang = 'id') : (lang = 'en');
+        router.push(`/${lang}/live-wedding`);
+      });
+    }
+
+    return { state, handleSend, handleDone };
   },
-  mounted() {
-    setTimeout(() => {
-      this.state.currentStep = 'step-1';
-    }, 100);
-
-    setTimeout(() => {
-      this.state.currentStep = 'step-2-showing';
-      setTimeout(() => {
-        this.state.currentStep = 'step-2';
-      }, 300);
-    }, 3000);
+  async mounted() {
+    await promiseTimeOut(100);
+    this.state.currentStep = 'step-1';
+    await promiseTimeOut(3000);
+    this.state.currentStep = 'step-2-showing';
+    await promiseTimeOut(300);
+    this.state.currentStep = 'step-2';
   }
 };
 </script>
@@ -103,8 +139,6 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
   }
 
   .bg {
@@ -122,13 +156,29 @@ export default {
   }
 }
 
-.welcome-step-2 {
-  position: relative;
+.welcome-step-1,
+.welcome-step-2,
+.welcome-step-3 {
+  position: fixed;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 100%;
+
+  &.showed {
+    z-index: 100;
+  }
+}
+
+.welcome-step-2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.welcome-step-3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 </style>

@@ -1,12 +1,17 @@
+@font-face {
+  font-family: Bigilla;
+  src: url('assets/fonts/Bigilla.otf') format('opentype');
+}
+
 .heading-0 {
-  font-family: 'Bigilla', sans-serif;
+  font-family: Bigilla, sans-serif;
   font-weight: bold;
   font-size: 6.25rem;
   letter-spacing: 2px;
 }
 
 .heading-1 {
-  font-family: 'Bigilla', sans-serif;
+  font-family: Bigilla, sans-serif;
   font-weight: bold;
   font-size: 3.125rem;
   letter-spacing: 2px;

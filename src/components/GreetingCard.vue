@@ -10,7 +10,7 @@
     ></textarea>
     <p>With Love</p>
     <Input class="mb-4 input-custom" placeholder="Write Your Name Here" />
-    <Button class="btn-custom">Kirim Ucapan</Button>
+    <Button @click="handleClick" class="btn-custom">Kirim Ucapan</Button>
   </div>
 </template>
 
@@ -23,6 +23,13 @@ export default {
   components: {
     Input,
     Button
+  },
+  setup(_props, ctx) {
+    function handleClick(e) {
+      ctx.emit('send', e);
+    }
+
+    return { handleClick };
   }
 };
 </script>
@@ -49,9 +56,14 @@ export default {
   }
 
   &.showed {
-    transition: transform 0.5s 2s;
     display: flex;
     transform: scale(1);
+  }
+
+  &.collapsing {
+    display: flex;
+    transition: transform 0.5s;
+    transform: scale(0);
   }
 }
 
