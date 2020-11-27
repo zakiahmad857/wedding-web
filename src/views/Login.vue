@@ -2,7 +2,9 @@
   <div class="login">
     <decoration />
     <div class="login__container">
-      <h1 class="heading-0">Selamat Datang</h1>
+      <h1 class="heading-0">
+        {{ state.lang === 'id' ? 'Selamat Datang' : 'Welcome' }}
+      </h1>
       <h2 class="mb-1">Masukan ID Guest yang didapat dari Undangan</h2>
       <Input
         class="mb-5"

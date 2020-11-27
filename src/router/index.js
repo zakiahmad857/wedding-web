@@ -3,6 +3,7 @@ import Login from '../views/Login.vue';
 import Welcome from '../views/Welcome.vue';
 import LiveWedding from '../views/LiveWedding.vue';
 import Gallery from '../views/Gallery.vue';
+import PreWedding from '../views/PreWedding.vue';
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/id/gallery',
     name: 'Gallery',
     component: Gallery
+  },
+  {
+    path: '/id/gallery/pre-wedding',
+    name: 'PreWedding',
+    component: PreWedding
   },
   { path: '/', redirect: '/id' }
 ];

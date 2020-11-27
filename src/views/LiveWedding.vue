@@ -58,6 +58,18 @@
         />
       </div>
     </nav>
+    <div class="video">
+      <vue-plyr>
+        <div class="plyr__video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/bTqVqk7FSmY?amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+            allowfullscreen
+            allowtransparency
+            allow="autoplay"
+          ></iframe>
+        </div>
+      </vue-plyr>
+    </div>
   </div>
 </template>
 
@@ -84,7 +96,6 @@ export default {
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
     async function handleClose(name) {
-      console.log(name);
       if (state[name] === 'collapsed') {
         state[name] = 'showing';
         await promiseTimeOut(100);
@@ -109,6 +120,17 @@ export default {
 .live-wedding {
   background: $color-blue;
   height: 100vh;
+}
+
+.video {
+  height: 50%;
+  width: 50%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 .popup-souvenir,

@@ -50,6 +50,8 @@ h1 {
 
 .couple {
   height: 20rem;
+  position: relative;
+  z-index: 10;
 }
 
 .thankyou {
@@ -88,6 +90,7 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 0;
   }
 }
 </style>

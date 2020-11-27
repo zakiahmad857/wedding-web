@@ -4,15 +4,15 @@
   }
 
   .mt-#{$i} {
-    margin-bottom: #{$i * 0.625}rem;
+    margin-top: #{$i * 0.625}rem;
   }
 
   .mr-#{$i} {
-    margin-bottom: #{$i * 0.625}rem;
+    margin-right: #{$i * 0.625}rem;
   }
 
   .ml-#{$i} {
-    margin-bottom: #{$i * 0.625}rem;
+    margin-left: #{$i * 0.625}rem;
   }
 }
 
