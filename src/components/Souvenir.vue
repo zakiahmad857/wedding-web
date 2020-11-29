@@ -51,13 +51,29 @@ export default {
   z-index: 999;
   border-radius: 1.2rem;
 
+  @media only screen and (max-width: 28.125em) {
+    width: 100%;
+    height: 100%;
+    border-radius: unset;
+  }
+
   &__container {
     display: flex;
+
+    @media only screen and (max-width: 28.125em) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
   }
 
   &__img {
     height: 25rem;
     margin: 0 2rem;
+
+    @media only screen and (max-width: 28.125em) {
+      margin: 2rem 0;
+    }
   }
 }
 
@@ -65,15 +81,24 @@ export default {
   text-align: center;
   font-weight: 400;
   color: $color-blue;
+
+  @media only screen and (max-width: 28.125em) {
+    text-align: left;
+  }
 }
 
 .text-2 {
   font-size: 1.7rem;
   margin-top: -0.5rem;
   line-height: 1.4;
+  color: $color-green;
 
   &.align-right {
     text-align: right;
+
+    @media only screen and (max-width: 28.125em) {
+      text-align: left;
+    }
   }
 }
 

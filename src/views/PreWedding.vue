@@ -68,7 +68,14 @@ import Navigation from '../components/Navigation.vue';
 export default {
   components: { Navigation },
   name: 'PreWedding',
-  setup() {},
+  mounted() {
+    const root = document.getElementsByTagName('html')[0];
+    root.classList.add('snap-scroll');
+  },
+  unmounted() {
+    const root = document.getElementsByTagName('html')[0];
+    root.classList.remove('snap-scroll');
+  },
   methods: {
     scrollToTwo() {
       const { top } = this.$refs.preWed2.getBoundingClientRect();
@@ -270,7 +277,7 @@ export default {
 </style>
 
 <style>
-html {
+html.snap-scroll {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }

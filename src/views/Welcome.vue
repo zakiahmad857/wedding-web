@@ -106,6 +106,10 @@ export default {
   width: auto;
   transition: transform 1s ease-out;
 
+  @media only screen and (max-width: 28.125em) {
+    height: 70vh;
+  }
+
   &.hide {
     transform: scale(0);
   }

@@ -48,6 +48,11 @@ h1 {
   line-height: 1;
 }
 
+.btn {
+  position: relative;
+  z-index: 10;
+}
+
 .couple {
   height: 20rem;
   position: relative;
@@ -69,6 +74,11 @@ h1 {
 
   transform: scale(0);
   transition: transform 1s ease-out;
+
+  @media only screen and (max-width: 28.125em) {
+    height: 100%;
+    width: 100%;
+  }
 
   &.showing {
     display: unset;

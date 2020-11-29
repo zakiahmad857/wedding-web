@@ -102,7 +102,25 @@ export default {
     padding-top: 30vh;
     position: relative;
     z-index: 1;
+
+    @media only screen and (max-width: 28.125em) {
+      padding: 0 2rem;
+      padding-top: 25vh;
+    }
   }
+}
+
+h1,
+h2,
+.mb-5 {
+  @media only screen and (max-width: 28.125em) {
+    order: 2;
+  }
+}
+
+h1,
+h2 {
+  text-align: center;
 }
 
 h1 {
@@ -116,35 +134,16 @@ h2 {
   font-weight: 400;
 }
 
-.bg-top {
-  background-image: url('../assets/images/bg-login-flower-top.png');
-  height: 30vh;
-  top: 0;
-  background-position: center bottom;
-}
-
-.bg-bottom {
-  bottom: 0;
-  height: 40vh;
-  background-image: url('../assets/images/bg-login-flower-bottom.png');
-  background-position: center top;
-}
-
-.bg-top,
-.bg-bottom {
-  position: fixed;
-  left: 0;
-  width: 100%;
-  background-size: cover;
-  z-index: 0;
-}
-
 .lang-ico {
   width: 5rem;
   cursor: pointer;
   position: relative;
   display: inline-block;
   box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.2);
+
+  @media only screen and (max-width: 28.125em) {
+    width: 7rem;
+  }
 
   &.inactive {
     opacity: 0.3;
@@ -183,5 +182,10 @@ h2 {
 .langs {
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 28.125em) {
+    order: 1;
+    margin-bottom: 2rem;
+  }
 }
 </style>

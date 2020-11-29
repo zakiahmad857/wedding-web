@@ -50,6 +50,11 @@ export default {
   transform: scale(0);
   transition: transform 0.5s 2s;
 
+  @media only screen and (max-width: 28.125em) {
+    height: 100%;
+    width: 100%;
+  }
+
   &.showing {
     display: unset;
     transition: transform 0.5s;
@@ -91,6 +96,7 @@ export default {
   border: 0;
   outline: 0;
   font-weight: 400;
+  margin-bottom: 2rem;
 }
 
 h1 {
@@ -99,6 +105,12 @@ h1 {
   font-weight: 400;
   align-self: flex-start;
   letter-spacing: 2px;
+
+  @media only screen and (max-width: 28.125em) {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 4rem;
+  }
 }
 
 p {
