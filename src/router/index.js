@@ -50,4 +50,14 @@ const router = createRouter({
   routes
 });
 
+// router.beforeEach((to, from, next) => {
+//   const weddingDate = new Date('Sun Dec 13 2020 08:00:00 GMT+0700');
+
+//   if (new Date(Date.now()) < weddingDate && to.fullPath !== '/before-event') {
+//     next({ path: '/before-event' });
+//   } else {
+//     next();
+//   }
+// });
+
 export default router;
