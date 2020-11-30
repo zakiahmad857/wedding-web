@@ -28,7 +28,32 @@
         <img src="../assets/icons/icon-info.svg" alt="info" />
       </div>
       <div id="step-5" class="util">
-        <img src="../assets/icons/icon-sound-on.svg" alt="sound-on" />
+        <img
+          v-if="state.music === 'off'"
+          @click="this.playMusic"
+          src="../assets/icons/icon-sound-on.svg"
+          alt="sound-on"
+        />
+        <img
+          v-else
+          @click="this.stopMusic"
+          src="../assets/icons/icon-sound-off.svg"
+          alt="sound-off"
+        />
+        <div style="display: none">
+          <vue-plyr ref="plyr">
+            <div class="plyr__video-embed">
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/gIB2egm7tL8"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </vue-plyr>
+        </div>
       </div>
     </div>
     <nav class="navigation">
@@ -72,10 +97,12 @@
         <vue-plyr>
           <div class="plyr__video-embed">
             <iframe
-              src="https://www.youtube.com/embed/bTqVqk7FSmY?amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/gIB2egm7tL8"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
-              allowtransparency
-              allow="autoplay"
             ></iframe>
           </div>
         </vue-plyr>
@@ -88,6 +115,7 @@
 <script>
 import { reactive } from 'vue';
 import { useRoute } from 'vue-router';
+import Cookies from 'js-cookie';
 import Souvenir from '../components/Souvenir.vue';
 import Amplop from '../components/Amplop.vue';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
@@ -99,6 +127,7 @@ export default {
   setup() {
     const state = reactive({
       routeBefore: '',
+      music: 'off',
       lang: '',
       souvenir: 'collapsed',
       amplop: 'collapsed',
@@ -217,11 +246,22 @@ export default {
     return { state, handleClose };
   },
   mounted() {
-    this.$refs.tour.start();
+    const cookie = Cookies.get('isFinishedTutorial');
+    if (!cookie) {
+      this.startTour();
+    }
   },
   methods: {
     startTour() {
       this.$refs.tour.start();
+    },
+    playMusic() {
+      this.$refs.plyr.player.play();
+      this.state.music = 'on';
+    },
+    stopMusic() {
+      this.$refs.plyr.player.stop();
+      this.state.music = 'off';
     }
   }
 };
@@ -240,12 +280,16 @@ export default {
 }
 
 .video {
-  height: 50%;
-  width: 50%;
+  height: auto;
+  width: 45%;
   position: absolute;
   top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  &:hover {
+    z-index: 999;
+  }
 
   &__text {
     position: absolute;

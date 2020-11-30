@@ -20,6 +20,7 @@
 
 <script>
 import { reactive } from 'vue';
+import Cookies from 'js-cookie';
 import Tooltip from './Tooltip.vue';
 export default {
   components: { Tooltip },
@@ -34,11 +35,21 @@ export default {
 
     function handleClose() {
       state.currentStep = -1;
+      const cookie = Cookies.get('isFinishedTutorial');
+      if (!cookie) {
+        Cookies.set('isFinishedTutorial', true);
+      }
     }
 
     function handleNext() {
       if (state.currentStep < props.steps.length - 1) state.currentStep++;
-      else state.currentStep = -1;
+      else {
+        state.currentStep = -1;
+        const cookie = Cookies.get('isFinishedTutorial');
+        if (!cookie) {
+          Cookies.set('isFinishedTutorial', true);
+        }
+      }
     }
 
     function handleBack() {
