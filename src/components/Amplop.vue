@@ -14,8 +14,7 @@
     </div>
     <h1 class="heading-0 mb-1">E-AMPLOP</h1>
     <p class="text-2">
-      Jangan khawatir, kamu tetap bisa memberikan amplop digital untuk Alfarra &
-      Gamma dengan cara di bawah ini:
+      {{ state.multiLang[lang].desc }}
     </p>
     <div class="amplop__items mb-2">
       <div class="amplop__item">
@@ -43,7 +42,7 @@
       </div>
     </div>
     <p class="text-2 text-2--kado">
-      Kamu juga bisa mengirimkan kado pernikahan ke:
+      {{ state.multiLang[lang].footer }}
     </p>
     <p class="text-3 sm">
       Jl. Mawar no 26 Komp.deplu <br />
@@ -53,14 +52,24 @@
 </template>
 
 <script>
+import { reactive } from 'vue';
+import AmplopMultiLang from '../json/E-Amplop.json';
+
 export default {
   name: 'Amplop',
+  props: {
+    lang: String
+  },
   setup(_props, ctx) {
+    const state = reactive({
+      multiLang: AmplopMultiLang
+    });
+
     function handleClose(e) {
       ctx.emit('close', e);
     }
 
-    return { handleClose };
+    return { handleClose, state };
   }
 };
 </script>

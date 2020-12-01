@@ -3,15 +3,17 @@
     <decoration />
     <div class="login__container">
       <h1 class="heading-0">
-        {{ state.lang === 'id' ? 'Selamat Datang' : 'Welcome' }}
+        {{ state.multiLang[state.lang].welcome }}
       </h1>
-      <h2 class="mb-1">Masukan ID Guest yang didapat dari Undangan</h2>
+      <h2 class="mb-1">{{ state.multiLang[state.lang].instruction }}</h2>
       <Input
         class="mb-5"
-        placeholder="Tulis ID Guest disini"
+        :placeholder="state.multiLang[state.lang].placeholder"
         @on-change="handleChange"
       />
-      <Button @click="handleLogin" class="mb-5">Masuk</Button>
+      <Button @click="handleLogin" class="mb-5">{{
+        state.lang === 'id' ? 'Masuk' : 'Login'
+      }}</Button>
       <div class="langs">
         <router-link to="/id">
           <div @click="state.lang = 'id'" class="lang">
@@ -49,11 +51,12 @@
 import { useRoute, useRouter } from 'vue-router';
 import Button from '@/components/Button.vue';
 import Input from '@/components/Input.vue';
-import { reactive, watch } from 'vue';
+import { reactive } from 'vue';
 import Decoration from '../components/Decoration.vue';
+import LoginMultiLang from '../json/Login.json';
 
 export default {
-  name: 'Home',
+  name: 'Login',
   components: {
     Button,
     Input,
@@ -64,17 +67,11 @@ export default {
     const router = useRouter();
     const state = reactive({
       lang: 'id',
-      inputVal: ''
+      inputVal: '',
+      multiLang: LoginMultiLang
     });
 
     if (route.path.startsWith('/en')) state.lang = 'en';
-
-    watch(
-      () => state.lang,
-      (lang, prevLang) => {
-        console.log(lang, prevLang);
-      }
-    );
 
     function handleChange(val) {
       state.inputVal = val;

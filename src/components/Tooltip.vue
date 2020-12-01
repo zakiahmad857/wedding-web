@@ -9,7 +9,8 @@
     <h1 class="tooltip__header heading-1 mb-1">{{ header }}</h1>
     <p class="tooltip__content text-3 mb-3">{{ content }}</p>
     <div class="tooltip__step">
-      Langkah {{ currentStep + 1 }} dari {{ lastStep }}
+      {{ lang === 'id' ? 'Langkah' : 'Step' }} {{ currentStep + 1 }}
+      {{ lang === 'id' ? 'dari' : 'from' }} {{ lastStep }}
     </div>
     <div class="tooltip__buttons">
       <div
@@ -19,8 +20,14 @@
       >
         <img src="../assets/icons/icon-chevron-left.svg" alt="back" />
       </div>
-      <Button @click.prevent="this.handleNext" class="tooltip__btn">{{
-        currentStep + 1 === lastStep ? 'Selesai' : 'Lanjut'
+      <Button
+        v-if="lang === 'id'"
+        @click.prevent="this.handleNext"
+        class="tooltip__btn"
+        >{{ currentStep + 1 === lastStep ? 'Selesai' : 'Lanjut' }}</Button
+      >
+      <Button v-else @click.prevent="this.handleNext" class="tooltip__btn">{{
+        currentStep + 1 === lastStep ? 'Finish' : 'Next'
       }}</Button>
     </div>
   </div>
@@ -43,7 +50,8 @@ export default {
     modifiers: {
       type: Array,
       required: false
-    }
+    },
+    lang: String
   },
   data() {
     return {
@@ -92,7 +100,7 @@ export default {
   padding-top: 1rem;
   background-color: $color-green-c;
   border-radius: 1rem;
-  width: 25rem;
+  max-width: 28rem;
   position: relative;
   z-index: 1100;
 

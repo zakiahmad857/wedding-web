@@ -1,9 +1,10 @@
 <template>
   <div class="welcome">
+    <decoration />
     <div
       class="welcome-step-1"
       :class="{
-        'fade-out': state.currentStep !== 'step-1'
+        'fade-out': state.currentStep !== 'step-1' && state.currentStep !== ''
       }"
     >
       <div class="bg"></div>
@@ -23,6 +24,7 @@
       class="welcome-step-2"
     >
       <GreetingCard
+        :lang="state.lang"
         @send="handleSend"
         :class="{
           showing: state.currentStep === 'step-2-showing',
@@ -36,6 +38,7 @@
       class="welcome-step-3"
     >
       <Thankyou
+        :lang="state.lang"
         @done="handleDone"
         :class="{
           showing: state.currentStep === 'step-3-showing',
@@ -53,16 +56,20 @@ import { useRouter, useRoute } from 'vue-router';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
 import GreetingCard from '../components/GreetingCard.vue';
 import Thankyou from '../components/Thankyou.vue';
+import Decoration from '../components/Decoration.vue';
 
 export default {
   name: 'Welcome',
-  components: { GreetingCard, Thankyou },
+  components: { GreetingCard, Thankyou, Decoration },
   setup() {
     const state = reactive({
-      currentStep: ''
+      currentStep: '',
+      lang: ''
     });
     const route = useRoute();
     const router = useRouter();
+
+    route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
     async function handleSend(_e) {
       state.currentStep = 'step-2-collapsing';
@@ -99,6 +106,7 @@ export default {
 
 .welcome {
   height: 100vh;
+  background: $color-green-c;
 }
 
 .welcome-img {
@@ -125,6 +133,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 9999;
 
   display: flex;
   justify-content: center;
@@ -134,8 +143,9 @@ export default {
   transition: opacity 2s ease-out, blur 1s 2s;
 
   &.fade-out {
-    opacity: 0.3;
+    opacity: 0;
     filter: blur(20px);
+    z-index: -1;
   }
 
   .bg,
@@ -143,6 +153,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
+    width: 100%;
   }
 
   .bg {

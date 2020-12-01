@@ -21,7 +21,7 @@
       }"
       class="e-amplop"
     >
-      <Amplop @close="handleClose('amplop')" />
+      <Amplop :lang="state.lang" @close="handleClose('amplop')" />
     </div>
     <div class="utils">
       <div id="step-6" @click.prevent="this.startTour" class="util">
@@ -29,7 +29,7 @@
       </div>
       <div id="step-5" class="util">
         <img
-          v-if="state.music === 'off'"
+          v-if="!isPlay"
           @click="this.playMusic"
           src="../assets/icons/icon-sound-on.svg"
           alt="sound-on"
@@ -94,7 +94,7 @@
           alt="Wedding Gamma Alfarra"
           class="video__text"
         />
-        <vue-plyr>
+        <vue-plyr ref="videoPlyr">
           <div class="plyr__video-embed">
             <iframe
               width="560"
@@ -108,18 +108,20 @@
         </vue-plyr>
       </div>
     </div>
-    <tour ref="tour" :steps="state.steps" />
+    <tour ref="tour" :lang="state.lang" :steps="steps" />
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Cookies from 'js-cookie';
+import store from '../store';
 import Souvenir from '../components/Souvenir.vue';
 import Amplop from '../components/Amplop.vue';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
 import Tour from '../components/Tour.vue';
+import TourMultiLang from '../json/Tour.json';
 
 export default {
   name: 'LiveWedding',
@@ -127,104 +129,100 @@ export default {
   setup() {
     const state = reactive({
       routeBefore: '',
-      music: 'off',
       lang: '',
       souvenir: 'collapsed',
       amplop: 'collapsed',
-      blur: false,
-      steps: [
-        {
-          header: 'LIVE Akad Nikah',
-          content:
-            'Di sini kamu bisa menyaksikan acara akad nikah Alfarra & Gamma yang sedang berlangsung secara live.',
-          position: 'bottom',
-          target: '#step-1',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, -40]
-              }
-            }
-          ]
-        },
-        {
-          header: 'Gallery',
-          content:
-            'Kamu bisa melihat foto-foto pre-wedding dan dokumentasi dari acara lamaran Alfarra & Gamma.',
-          position: 'top-end',
-          target: '#step-2',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 0]
-              }
-            }
-          ]
-        },
-        {
-          header: 'Cinderamata',
-          content:
-            'Sebagai tanda terima kasih dari Alfarra & Gamma, ada sebuah cinderamata yang bisa kamu dapatkan di sini.',
-          position: 'top',
-          target: '#step-3',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 0]
-              }
-            }
-          ]
-        },
-        {
-          header: 'E-Amplop',
-          content:
-            'Walaupun tidak langsung bertatap muka, kamu tetap bisa memberikan amplop pernikahan secara digital lho.',
-          position: 'top-start',
-          target: '#step-4',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 0]
-              }
-            }
-          ]
-        },
-        {
-          header: 'Alunan Musik',
-          content:
-            'Musik yang diputar adalah playlist pilihan  Alfarra & Gamma. Kamu dapat matikan dan nyalakan kembali dengan klik tombol ini.',
-          position: 'bottom-end',
-          target: '#step-5',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [20, 20]
-              }
-            }
-          ]
-        },
-        {
-          header: 'Petunjuk ',
-          content:
-            'Jika ingin membaca ulang petunjuk penggunaan website, kamu dapat menekan tombol di atas ini.',
-          position: 'bottom-end',
-          target: '#step-6',
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [20, 20]
-              }
-            }
-          ]
-        }
-      ]
+      blur: false
     });
+
+    const steps = computed(() => [
+      {
+        header: TourMultiLang[state.lang]['step-1'].header,
+        content: TourMultiLang[state.lang]['step-1'].content,
+        position: 'bottom',
+        target: '#step-1',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, -40]
+            }
+          }
+        ]
+      },
+      {
+        header: TourMultiLang[state.lang]['step-2'].header,
+        content: TourMultiLang[state.lang]['step-2'].content,
+        position: 'top-end',
+        target: '#step-2',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 0]
+            }
+          }
+        ]
+      },
+      {
+        header: TourMultiLang[state.lang]['step-3'].header,
+        content: TourMultiLang[state.lang]['step-3'].content,
+        position: 'top',
+        target: '#step-3',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 0]
+            }
+          }
+        ]
+      },
+      {
+        header: TourMultiLang[state.lang]['step-4'].header,
+        content: TourMultiLang[state.lang]['step-4'].content,
+        position: 'top-start',
+        target: '#step-4',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 0]
+            }
+          }
+        ]
+      },
+      {
+        header: TourMultiLang[state.lang]['step-5'].header,
+        content: TourMultiLang[state.lang]['step-5'].content,
+        position: 'bottom-end',
+        target: '#step-5',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [20, 20]
+            }
+          }
+        ]
+      },
+      {
+        header: TourMultiLang[state.lang]['step-6'].header,
+        content: TourMultiLang[state.lang]['step-6'].content,
+        position: 'bottom-end',
+        target: '#step-6',
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: [20, 20]
+            }
+          }
+        ]
+      }
+    ]);
+
+    const isPlay = computed(() => store.state.isPlay);
 
     const route = useRoute();
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
@@ -243,13 +241,25 @@ export default {
       }
     }
 
-    return { state, handleClose };
+    return { state, handleClose, isPlay, steps };
   },
   mounted() {
     const cookie = Cookies.get('isFinishedTutorial');
     if (!cookie) {
       this.startTour();
     }
+
+    if (this.isPlay) {
+      setTimeout(() => {
+        this.playMusic();
+      }, 100);
+    }
+
+    const player = this.$refs.videoPlyr.player;
+
+    player.on('play', () => {
+      this.stopMusic();
+    });
   },
   methods: {
     startTour() {
@@ -257,11 +267,11 @@ export default {
     },
     playMusic() {
       this.$refs.plyr.player.play();
-      this.state.music = 'on';
+      store.dispatch('playMusic');
     },
     stopMusic() {
       this.$refs.plyr.player.stop();
-      this.state.music = 'off';
+      store.dispatch('stopMusic');
     }
   }
 };

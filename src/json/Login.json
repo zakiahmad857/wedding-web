@@ -1,0 +1,12 @@
+{
+  "en": {
+    "welcome": "Welcome",
+    "instruction": "Insert guest ID from your wedding invitation",
+    "placeholder": "Write guest ID here"
+  },
+  "id": {
+    "welcome": "Selamat Datang",
+    "instruction": "Masukan ID Guest yang didapat dari Undangan",
+    "placeholder": "Tulis ID Guest disini"
+  }
+}

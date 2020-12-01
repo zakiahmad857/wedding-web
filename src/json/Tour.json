@@ -1,0 +1,54 @@
+{
+  "en": {
+    "step-1": {
+      "header": "LIVE Wedding Ceremony",
+      "content": "You can watch what is happening in the wedding of Alfarra & Gamma here, LIVE."
+    },
+    "step-2": {
+      "header": "Photo Gallery",
+      "content": "Enjoy the pre-wedding photos of Alfarra & Gamma here."
+    },
+    "step-3": {
+      "header": "Souvenir",
+      "content": "As a thank you, Alfarra & Gamma have prepared a special gift for you as the wedding souvenir."
+    },
+    "step-4": {
+      "header": "Digital Envelope",
+      "content": "Although you aren’t present at the wedding location, you can also send some loves for Alfarra & Gamma, digitally."
+    },
+    "step-5": {
+      "header": "Music On/Off",
+      "content": "The music playlist is Alfarra & Gamma music selection. "
+    },
+    "step-6": {
+      "header": "Website Guide",
+      "content": "You can always read the website instructions again by pressing this button."
+    }
+  },
+  "id": {
+    "step-1": {
+      "header": "LIVE Akad Nikah",
+      "content": "Di sini kamu bisa menyaksikan acara akad nikah Alfarra & Gamma yang sedang berlangsung secara live."
+    },
+    "step-2": {
+      "header": "Gallery",
+      "content": "Kamu bisa melihat foto-foto pre-wedding dan dokumentasi dari acara lamaran Alfarra & Gamma."
+    },
+    "step-3": {
+      "header": "Cinderamata",
+      "content": "Sebagai tanda terima kasih dari Alfarra & Gamma, ada sebuah cinderamata yang bisa kamu dapatkan di sini."
+    },
+    "step-4": {
+      "header": "E-Amplop",
+      "content": "Walaupun tidak langsung bertatap muka, kamu tetap bisa memberikan amplop pernikahan secara digital lho."
+    },
+    "step-5": {
+      "header": "Alunan Musik",
+      "content": "Musik yang diputar adalah playlist pilihan  Alfarra & Gamma. Kamu dapat matikan dan nyalakan kembali dengan klik tombol ini."
+    },
+    "step-6": {
+      "header": "Petunjuk",
+      "content": "Jika ingin membaca ulang petunjuk penggunaan website, kamu dapat menekan tombol di atas ini."
+    }
+  }
+}

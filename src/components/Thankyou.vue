@@ -1,8 +1,8 @@
 <template>
   <div class="thankyou">
     <h1 class="mb-2">
-      Terima Kasih <br />
-      atas ucapannya
+      {{ lang === 'id' ? 'Terima Kasih' : 'Thank You' }} <br />
+      {{ lang === 'id' ? 'atas ucapannya' : 'For The Wishes' }}
     </h1>
     <img
       class="couple mb-3"
@@ -14,9 +14,9 @@
       src="../assets/images/text-gamma-alfarra.svg"
       alt="gamma alfarra"
     />
-    <Button @click="handleClick" style="width: 20rem" color="grey"
-      >Masuk Ke Acara</Button
-    >
+    <Button @click="handleClick" style="width: 20rem" color="grey">{{
+      lang === 'id' ? 'Masuk Ke Acara' : 'Enter Event'
+    }}</Button>
   </div>
 </template>
 
@@ -27,6 +27,9 @@ export default {
   name: 'Thankyou',
   components: {
     Button
+  },
+  props: {
+    lang: String
   },
   setup(_props, ctx) {
     function handleClick(e) {
@@ -40,7 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 h1 {
-  font-family: 'Dawning of a New Day', sans-serif;
+  font-family: 'Alex Brush', cursive;
   font-size: 4.75rem;
   font-weight: 400;
   letter-spacing: 2px;

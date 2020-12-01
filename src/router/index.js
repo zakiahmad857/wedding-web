@@ -22,13 +22,28 @@ const routes = [
     component: Welcome
   },
   {
+    path: '/en/welcome',
+    name: 'Welcome-en',
+    component: Welcome
+  },
+  {
     path: '/id/live-wedding',
     name: 'LiveWedding',
     component: LiveWedding
   },
   {
+    path: '/en/live-wedding',
+    name: 'LiveWedding-en',
+    component: LiveWedding
+  },
+  {
     path: '/id/gallery',
     name: 'Gallery',
+    component: PreWedding
+  },
+  {
+    path: '/en/gallery',
+    name: 'Gallery-en',
     component: PreWedding
   },
   {

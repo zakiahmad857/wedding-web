@@ -2,6 +2,7 @@
   <div class="tour">
     <div v-for="(step, i) in steps" :key="step.target">
       <tooltip
+        :lang="lang"
         v-if="state.currentStep === i"
         :content="step.content"
         :header="step.header"
@@ -26,7 +27,8 @@ export default {
   components: { Tooltip },
   name: 'tour',
   props: {
-    steps: Array
+    steps: Array,
+    lang: String
   },
   setup(props, _ctx) {
     const state = reactive({

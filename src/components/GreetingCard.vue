@@ -2,21 +2,28 @@
   <div class="greeting-card">
     <h1 class="mb-2">Dear Gamma & Alfarra</h1>
     <textarea
-      placeholder="Write your message to the bride & groom here"
+      :placeholder="state.multiLang[lang].textAreaPlaceHolder"
       class="lined-textarea text-1"
       name=""
       id=""
       rows="7"
     ></textarea>
     <p>With Love</p>
-    <Input class="mb-4 input-custom" placeholder="Write Your Name Here" />
-    <Button @click="handleClick" class="btn-custom">Kirim Ucapan</Button>
+    <Input
+      class="mb-4 input-custom"
+      :placeholder="state.multiLang[lang].placeholder"
+    />
+    <Button @click="handleClick" class="btn-custom">{{
+      state.multiLang[lang].button
+    }}</Button>
   </div>
 </template>
 
 <script>
 import Input from './Input.vue';
 import Button from './Button.vue';
+import WelcomeMultiLang from '../json/Welcome.json';
+import { reactive } from 'vue';
 
 export default {
   name: 'GreetingCard',
@@ -24,12 +31,19 @@ export default {
     Input,
     Button
   },
+  props: {
+    lang: String
+  },
   setup(_props, ctx) {
+    const state = reactive({
+      multiLang: WelcomeMultiLang
+    });
+
     function handleClick(e) {
       ctx.emit('send', e);
     }
 
-    return { handleClick };
+    return { handleClick, state };
   }
 };
 </script>
@@ -100,7 +114,7 @@ export default {
 }
 
 h1 {
-  font-family: 'Dawning of a New Day', sans-serif;
+  font-family: 'Alex Brush', cursive;
   font-size: 4.75rem;
   font-weight: 400;
   align-self: flex-start;
