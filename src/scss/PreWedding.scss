@@ -53,6 +53,11 @@
       justify-self: flex-end;
       height: 75%;
 
+      @media only screen and (max-width: 64em) and (orientation: portrait) {
+        width: 42vw;
+        height: auto;
+      }
+
       @media only screen and (max-width: 28.175em) {
         height: auto;
         width: 50vw;
@@ -76,6 +81,10 @@
       left: -3rem;
       margin-top: 1rem;
 
+      @media only screen and (max-width: 50em) {
+        width: 50%;
+      }
+
       @media only screen and (max-width: 28.175em) {
         display: none;
       }
@@ -92,6 +101,11 @@
 
     & > img {
       height: 75%;
+
+      @media only screen and (max-width: 64em) and (orientation: portrait) {
+        width: 42vw;
+        height: auto;
+      }
 
       @media only screen and (max-width: 28.175em) {
         height: unset;
@@ -144,6 +158,10 @@
       height: 100%;
       width: 100%;
 
+      @media only screen and (max-width: 64em) and (orientation: portrait) {
+        height: 50vh;
+      }
+
       @media only screen and (max-width: 28.175em) {
         height: 50vh;
       }
@@ -174,6 +192,11 @@
     img {
       height: 80%;
 
+      @media only screen and (max-width: 64em) {
+        height: unset;
+        width: calc(100vw / 2 - 6rem);
+      }
+
       @media only screen and (max-width: 28.175em) {
         height: unset;
         width: calc(100vw / 2 - 4rem);
@@ -199,6 +222,11 @@
     img {
       height: 80%;
 
+      @media only screen and (max-width: 64em) {
+        width: 90vw;
+        height: unset;
+      }
+
       @media only screen and (max-width: 28.175em) {
         height: unset;
         width: 90vw;
@@ -219,6 +247,11 @@
 
     img {
       height: 80%;
+
+      @media only screen and (max-width: 64em) {
+        height: unset;
+        width: calc(100vw / 3 - 15px);
+      }
 
       @media only screen and (max-width: 28.175em) {
         height: unset;
@@ -244,6 +277,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
+    @media only screen and (max-width: 64em) and (orientation: portrait) {
+      align-items: center;
+    }
+
     @media only screen and (max-width: 28.175em) {
       align-items: center;
     }
@@ -253,6 +290,11 @@
       width: 100%;
       background-size: cover;
       background-position: center -60px;
+
+      @media only screen and (max-width: 64em) and (orientation: portrait) {
+        height: 50%;
+        background-position: center;
+      }
 
       @media only screen and (max-width: 28.175em) {
         height: 50%;
@@ -339,6 +381,11 @@
     width: 105%;
     z-index: 0;
 
+    @media only screen and (max-width: 50em) {
+      width: 100%;
+      padding: 3rem 2rem 2rem 2rem;
+    }
+
     @media only screen and (max-width: 28.175em) {
       right: 0;
       left: unset;
@@ -391,9 +438,17 @@
     top: 20%;
     height: 60%;
 
+    @media only screen and (max-width: 50em) {
+      height: 45%;
+    }
+
     @media only screen and (max-width: 28.175em) {
       height: 30%;
       top: 0;
+    }
+
+    @media only screen and (max-width: 20em) {
+      height: 25%;
     }
 
     &--1 {
@@ -403,8 +458,16 @@
     &--2 {
       height: 50%;
 
+      @media only screen and (max-width: 50em) {
+        height: 35%;
+      }
+
       @media only screen and (max-width: 28.175em) {
         height: 20%;
+      }
+
+      @media only screen and (max-width: 20em) {
+        height: 18%;
       }
 
       img {
@@ -416,6 +479,10 @@
 
     img {
       height: 100%;
+
+      @media only screen and (min-width: 28.175em) and (max-width: 64em) and (orientation: portrait) {
+        height: 50%;
+      }
     }
 
     .text-2 {
@@ -423,6 +490,10 @@
       font-size: 1.4rem;
       line-height: 1.2;
       color: $color-brown;
+
+      @media only screen and (max-width: 20em) {
+        margin-top: 1rem;
+      }
     }
   }
 }
@@ -442,6 +513,14 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media only screen and (max-width: 64em) {
+    font-size: 10rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 7rem;
+  }
 
   @media only screen and (max-width: 28.175em) {
     display: none;

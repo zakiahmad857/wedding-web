@@ -71,6 +71,10 @@ export default {
     height: 25rem;
     margin: 0 2rem;
 
+    @media only screen and (max-width: 90em) and (orientation: landscape) {
+      height: 18rem;
+    }
+
     @media only screen and (max-width: 28.125em) {
       margin: 2rem 0;
     }

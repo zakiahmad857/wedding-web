@@ -59,6 +59,14 @@ export default {
     height: 100%;
     justify-items: center;
 
+    @media only screen and (max-width: 64em) and (orientation: portrait) {
+      padding-top: 10rem;
+    }
+
+    @media only screen and (max-width: 75em) {
+      grid-template-columns: 1fr 1.5fr 1fr;
+    }
+
     @media only screen and (max-width: 28.175em) {
       padding-top: 25%;
     }
@@ -87,6 +95,18 @@ export default {
     height: 35rem;
     width: auto;
 
+    @media only screen and (max-width: 90em) {
+      height: 30rem;
+    }
+
+    @media only screen and (max-width: 64em) {
+      height: 25rem;
+    }
+
+    @media only screen and (max-width: 56.25em) {
+      height: 20rem;
+    }
+
     @media only screen and (max-width: 28.175em) {
       height: 20rem;
       position: absolute;
@@ -99,10 +119,18 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: 1rem;
 
-  @media only screen and (max-width: 28.175em) {
-    img {
+  img {
+    @media only screen and (max-width: 75em) {
+      height: 10rem;
+    }
+
+    @media only screen and (max-width: 56.25em) {
+      height: 8rem;
+    }
+
+    @media only screen and (max-width: 28.175em) {
       height: 10rem;
     }
   }
@@ -113,7 +141,15 @@ export default {
 
   .heading-1 {
     color: $color-maroon-a;
-    font-size: 5rem;
+    font-size: 4rem;
+
+    @media only screen and (max-width: 64em) {
+      font-size: 4rem;
+    }
+
+    @media only screen and (max-width: 56.25em) {
+      font-size: 3.5rem;
+    }
 
     @media only screen and (max-width: 28.175em) {
       font-size: 4rem;
@@ -122,6 +158,7 @@ export default {
 
   .text-1 {
     color: $color-green;
+    font-size: 1.6rem;
   }
 
   .heading-1,

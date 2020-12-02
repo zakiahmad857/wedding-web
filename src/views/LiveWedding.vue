@@ -147,6 +147,12 @@ export default {
             options: {
               offset: [0, -40]
             }
+          },
+          {
+            name: 'preventOverflow',
+            options: {
+              altAxis: true
+            }
           }
         ]
       },
@@ -273,6 +279,10 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media only screen and (max-width: 64em) and (orientation: portrait) {
+    width: 70%;
+  }
+
   @media only screen and (max-width: 28.175em) {
     width: 85%;
   }
@@ -345,7 +355,7 @@ export default {
   margin-top: auto;
   position: relative;
 
-  @media only screen and (max-width: 28.175em) {
+  @media only screen and (max-width: 43.75em) {
     & > div {
       position: absolute !important;
       right: 2rem;
@@ -368,7 +378,7 @@ export default {
   transform: scale(1);
   transition: all 0.3s;
 
-  @media only screen and (max-width: 28.175em) {
+  @media only screen and (max-width: 43.75em) {
     position: absolute;
 
     &:first-child {

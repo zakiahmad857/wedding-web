@@ -100,6 +100,14 @@ export default {
     position: relative;
     z-index: 1;
 
+    @media only screen and (max-width: 90em) and (orientation: landscape) {
+      padding-top: 20vh;
+
+      .heading-0 {
+        font-size: 5rem;
+      }
+    }
+
     @media only screen and (max-width: 28.125em) {
       padding: 0 2rem;
       padding-top: 25vh;
@@ -129,6 +137,10 @@ h2 {
   font-size: 2.25rem;
   color: $color-blue-b;
   font-weight: 400;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 2rem;
+  }
 }
 
 .lang-ico {

@@ -49,6 +49,10 @@ h1 {
   letter-spacing: 2px;
   text-align: center;
   line-height: 1;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 4rem;
+  }
 }
 
 .btn {
@@ -60,6 +64,10 @@ h1 {
   height: 20rem;
   position: relative;
   z-index: 10;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    height: 15rem;
+  }
 }
 
 .thankyou {
@@ -104,6 +112,10 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 0;
+
+    @media only screen and (max-width: 90em) and (orientation: landscape) {
+      height: 15rem;
+    }
   }
 }
 </style>

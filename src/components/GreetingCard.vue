@@ -63,6 +63,10 @@ export default {
   transform: scale(0);
   transition: transform 0.5s 2s;
 
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    padding: 2rem 4rem;
+  }
+
   @media only screen and (max-width: 28.125em) {
     height: 100%;
     width: 100%;
@@ -88,6 +92,11 @@ export default {
 .input-custom {
   font-size: 1.5rem;
   min-width: 25rem;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+  }
 }
 
 .btn-custom {
@@ -111,6 +120,13 @@ export default {
   font-weight: 400;
   margin-bottom: 2rem;
   height: 100%;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    margin-bottom: 1rem;
+    line-height: 30px;
+    background-size: 100% 30px;
+    font-size: 1.6rem;
+  }
 }
 
 h1 {
@@ -119,6 +135,11 @@ h1 {
   font-weight: 400;
   align-self: flex-start;
   letter-spacing: 2px;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
 
   @media only screen and (max-width: 28.125em) {
     font-size: 3.5rem;
@@ -131,5 +152,9 @@ p {
   font-family: 'Dawning of a New Day', sans-serif;
   font-size: 3rem;
   font-weight: 400;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 2.5rem;
+  }
 }
 </style>

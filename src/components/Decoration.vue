@@ -16,6 +16,10 @@ export default {
   top: 0;
   background-position: center bottom;
 
+  @media only screen and (max-width: 90em) {
+    height: 25vh;
+  }
+
   @media only screen and (max-width: 28.125em) {
     height: 20vh !important;
   }

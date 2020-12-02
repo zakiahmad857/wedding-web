@@ -146,6 +146,10 @@ export default {
   border-radius: 1.2rem;
   overflow: hidden;
 
+  @media only screen and (max-width: 64em) {
+    padding: 1rem 3rem;
+  }
+
   @media only screen and (max-width: 28.175em) {
     width: 100%;
     height: 100%;
@@ -160,6 +164,12 @@ export default {
     margin-top: 1rem;
     border-bottom: 1px solid $color-green-a;
     padding-bottom: 2rem;
+    gap: 0 3rem;
+
+    @media only screen and (max-width: 90em) and (orientation: landscape) {
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
 
     @media only screen and (max-width: 28.175em) {
       grid-template-columns: 1fr;
@@ -200,6 +210,14 @@ export default {
     img {
       height: 11rem;
 
+      @media only screen and (max-width: 90em) and (orientation: landscape) {
+        height: 9rem;
+      }
+
+      @media only screen and (max-width: 64em) {
+        height: 7rem;
+      }
+
       @media only screen and (max-width: 28.175em) {
         display: none;
       }
@@ -232,10 +250,18 @@ export default {
   text-align: center;
   font-size: 5rem;
 
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 3.5rem;
+  }
+
   @media only screen and (max-width: 28.175em) {
     font-size: 3.5rem;
     text-align: left;
     margin-top: 8rem;
+  }
+
+  @media only screen and (max-width: 20em) {
+    margin-top: 3rem;
   }
 }
 
@@ -246,6 +272,10 @@ export default {
   color: $color-blue-b;
   line-height: 1.2;
   font-size: 1.7rem;
+
+  @media only screen and (max-width: 90em) and (orientation: landscape) {
+    font-size: 1.4rem;
+  }
 
   @media only screen and (max-width: 28.175em) {
     text-align: left;
@@ -264,6 +294,10 @@ export default {
   &.sm {
     font-size: 1.4rem;
     color: $color-blue;
+
+    @media only screen and (max-width: 90em) and (orientation: landscape) {
+      font-size: 1rem;
+    }
   }
 }
 
