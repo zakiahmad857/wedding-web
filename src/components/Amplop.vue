@@ -1,5 +1,8 @@
 <template>
   <div class="amplop">
+    <div :class="{ showed: state.messageStatus }" class="success">
+      Text Copied!
+    </div>
     <img
       @click="handleClose"
       src="../assets/icons/icon-close.svg"
@@ -19,26 +22,40 @@
     <div class="amplop__items mb-2">
       <div class="amplop__item">
         <span class="item-number">1.</span>
-        <p class="text-3 mb-1">Scan QR via <strong>OVO</strong></p>
+        <p class="text-3 mb-1">
+          {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
+        </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
         <p class="text-3 sm">Phone Number xxx</p>
         <p class="text-3 sm">Account Name xxx</p>
+        <button @click.prevent="handleCopy($event, '088976512')" class="copy">
+          Copy
+        </button>
       </div>
       <div class="amplop__item">
         <span class="item-number">2.</span>
 
-        <p class="text-3 mb-1">Scan QR via <strong>OVO</strong></p>
+        <p class="text-3 mb-1">
+          {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
+        </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
         <p class="text-3 sm">Phone Number xxx</p>
         <p class="text-3 sm">Account Name xxx</p>
+        <button @click.prevent="handleCopy($event, '088976512')" class="copy">
+          Copy
+        </button>
       </div>
       <div class="amplop__item">
         <span class="item-number">3.</span>
-
-        <p class="text-3 mb-1">Scan QR via <strong>OVO</strong></p>
+        <p class="text-3 mb-1">
+          {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
+        </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
         <p class="text-3 sm">Phone Number xxx</p>
         <p class="text-3 sm">Account Name xxx</p>
+        <button @click.prevent="handleCopy($event, '088976512')" class="copy">
+          Copy
+        </button>
       </div>
     </div>
     <p class="text-2 text-2--kado">
@@ -62,20 +79,55 @@ export default {
   },
   setup(_props, ctx) {
     const state = reactive({
-      multiLang: AmplopMultiLang
+      multiLang: AmplopMultiLang,
+      messageStatus: false
     });
+
+    async function handleCopy(_event, text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        state.messageStatus = true;
+
+        setTimeout(() => {
+          state.messageStatus = false;
+        }, 2000);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
     function handleClose(e) {
       ctx.emit('close', e);
     }
 
-    return { handleClose, state };
+    return { handleClose, state, handleCopy };
   }
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../scss/variables.scss';
+
+.success {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(4rem);
+  background: $color-blue-b;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.6rem;
+  width: 80%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s;
+
+  &.showed {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
 
 .ic-close {
   position: absolute;
@@ -94,6 +146,12 @@ export default {
   border-radius: 1.2rem;
   overflow: hidden;
 
+  @media only screen and (max-width: 28.175em) {
+    width: 100%;
+    height: 100%;
+    padding: 1rem 2rem;
+  }
+
   &__items {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -102,13 +160,49 @@ export default {
     margin-top: 1rem;
     border-bottom: 1px solid $color-green-a;
     padding-bottom: 2rem;
+
+    @media only screen and (max-width: 28.175em) {
+      grid-template-columns: 1fr;
+      justify-items: flex-start;
+      padding: 0 2rem;
+    }
   }
 
   &__item {
     position: relative;
 
+    @media only screen and (max-width: 28.175em) {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .copy {
+      display: none;
+      @media only screen and (max-width: 28.175em) {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 30%;
+        background: white;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        border-radius: 3px;
+        border: 1px solid $color-black-1;
+        outline: none;
+        transform: scale(1);
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+
     img {
       height: 11rem;
+
+      @media only screen and (max-width: 28.175em) {
+        display: none;
+      }
     }
   }
 }
@@ -137,6 +231,12 @@ export default {
   color: $color-blue;
   text-align: center;
   font-size: 5rem;
+
+  @media only screen and (max-width: 28.175em) {
+    font-size: 3.5rem;
+    text-align: left;
+    margin-top: 8rem;
+  }
 }
 
 .text-2 {
@@ -146,6 +246,11 @@ export default {
   color: $color-blue-b;
   line-height: 1.2;
   font-size: 1.7rem;
+
+  @media only screen and (max-width: 28.175em) {
+    text-align: left;
+    width: 100%;
+  }
 
   &--kado {
     text-align: left;

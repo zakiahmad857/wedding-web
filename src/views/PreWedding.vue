@@ -3,6 +3,7 @@
     <navigation variant="transparent" />
     <div class="pre-wedding__1">
       <h1 class="heading-0">Pre-<br />Wed</h1>
+      <h1 class="heading mobile mb-1">PreWed</h1>
       <div class="one__img-container">
         <img
           class="img-1"
@@ -48,7 +49,9 @@
       </div>
       <img src="../assets/images/prewed-5.png" alt="Pre Wedding" />
     </div>
-    <div class="pre-wedding__4"></div>
+    <div class="pre-wedding__4">
+      <div class="img"></div>
+    </div>
     <div class="pre-wedding__5">
       <div class="two__img-container two__img-container--1">
         <img src="../assets/images/prewed-2.png" alt="Pre Wedding" />

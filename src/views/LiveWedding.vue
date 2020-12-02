@@ -154,43 +154,19 @@ export default {
         header: TourMultiLang[state.lang]['step-2'].header,
         content: TourMultiLang[state.lang]['step-2'].content,
         position: 'top-end',
-        target: '#step-2',
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 0]
-            }
-          }
-        ]
+        target: '#step-2'
       },
       {
         header: TourMultiLang[state.lang]['step-3'].header,
         content: TourMultiLang[state.lang]['step-3'].content,
         position: 'top',
-        target: '#step-3',
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 0]
-            }
-          }
-        ]
+        target: '#step-3'
       },
       {
         header: TourMultiLang[state.lang]['step-4'].header,
         content: TourMultiLang[state.lang]['step-4'].content,
         position: 'top-start',
-        target: '#step-4',
-        modifiers: [
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 0]
-            }
-          }
-        ]
+        target: '#step-4'
       },
       {
         header: TourMultiLang[state.lang]['step-5'].header,
@@ -297,6 +273,10 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media only screen and (max-width: 28.175em) {
+    width: 85%;
+  }
+
   &:hover {
     z-index: 999;
   }
@@ -363,6 +343,21 @@ export default {
   padding: 0 1.5rem;
   height: 244px;
   margin-top: auto;
+  position: relative;
+
+  @media only screen and (max-width: 28.175em) {
+    & > div {
+      position: absolute !important;
+      right: 2rem;
+      bottom: 8rem;
+
+      .nav-item {
+        bottom: 0;
+        right: 0;
+        position: relative;
+      }
+    }
+  }
 }
 
 .nav-item {
@@ -373,8 +368,29 @@ export default {
   transform: scale(1);
   transition: all 0.3s;
 
-  &:hover {
-    transform: scale(1.05);
+  @media only screen and (max-width: 28.175em) {
+    position: absolute;
+
+    &:first-child {
+      left: 1rem;
+      bottom: 8rem;
+    }
+
+    &:nth-child(2) {
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) scale(1);
+
+      &:active {
+        transform: translateX(-50%) scale(0.95);
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &:active {

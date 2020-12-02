@@ -2,7 +2,7 @@
   <div class="tooltip__overlay"></div>
   <div id="tooltip" class="tooltip" :class="this.position">
     <img
-      @click.prevent="this.handleClose"
+      @click.prevent="handleClose"
       src="../assets/icons/icon-close.svg"
       class="tooltip__close"
     />
@@ -14,7 +14,7 @@
     </div>
     <div class="tooltip__buttons">
       <div
-        @click.prevent="this.handleBack"
+        @click.prevent="handleBack"
         v-if="currentStep > 0"
         class="tooltip__back"
       >
@@ -22,7 +22,7 @@
       </div>
       <Button
         v-if="lang === 'id'"
-        @click.prevent="this.handleNext"
+        @click.prevent="handleNext"
         class="tooltip__btn"
         >{{ currentStep + 1 === lastStep ? 'Selesai' : 'Lanjut' }}</Button
       >
@@ -53,21 +53,26 @@ export default {
     },
     lang: String
   },
+  setup(_props, ctx) {
+    function handleNext(e) {
+      ctx.emit('next', e);
+    }
+
+    function handleClose(e) {
+      ctx.emit('close', e);
+    }
+    function handleBack(e) {
+      ctx.emit('back', e);
+    }
+
+    return { handleNext, handleClose, handleBack };
+  },
   data() {
     return {
       initialPopperZ: 0
     };
   },
   methods: {
-    handleNext() {
-      this.$emit('next');
-    },
-    handleClose() {
-      this.$emit('close');
-    },
-    handleBack() {
-      this.$emit('back');
-    },
     createStep() {
       const popper = document.querySelector(this.target);
       const tooltip = document.querySelector('#tooltip');
@@ -76,7 +81,7 @@ export default {
 
       const options = {
         placement: this.position,
-        modifiers: this.modifiers
+        modifiers: this.modifiers || []
       };
 
       createPopper(popper, tooltip, options);

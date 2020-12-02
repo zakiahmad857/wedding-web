@@ -47,6 +47,10 @@ export default {
     height: 40vh;
     background-size: cover;
     background-position: center top;
+
+    @media only screen and (max-width: 28.175em) {
+      height: 25vh;
+    }
   }
 
   &__container {
@@ -54,14 +58,40 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     height: 100%;
     justify-items: center;
+
+    @media only screen and (max-width: 28.175em) {
+      padding-top: 25%;
+    }
   }
 }
 
 .couple {
   padding-top: 2rem;
+  position: relative;
+
+  @media only screen and (max-width: 28.175em) {
+    &:first-child {
+      img {
+        left: -3rem;
+      }
+    }
+
+    &:last-child {
+      img {
+        right: -3rem;
+      }
+    }
+  }
+
   img {
     height: 35rem;
     width: auto;
+
+    @media only screen and (max-width: 28.175em) {
+      height: 20rem;
+      position: absolute;
+      top: -7rem;
+    }
   }
 }
 
@@ -71,9 +101,23 @@ export default {
   align-items: center;
   padding-top: 4rem;
 
+  @media only screen and (max-width: 28.175em) {
+    img {
+      height: 10rem;
+    }
+  }
+
+  @media only screen and (max-width: 21.25em) {
+    padding-top: 0;
+  }
+
   .heading-1 {
     color: $color-maroon-a;
     font-size: 5rem;
+
+    @media only screen and (max-width: 28.175em) {
+      font-size: 4rem;
+    }
   }
 
   .text-1 {

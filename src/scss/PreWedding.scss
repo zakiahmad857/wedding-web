@@ -15,40 +15,98 @@
     scroll-snap-align: center;
   }
 
+  &__1 {
+    @media only screen and (max-width: 28.175em) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .heading.mobile {
+      display: none;
+      font-family: 'Bigilla', sans-serif;
+      font-weight: normal;
+      color: $color-brown;
+      font-size: 7rem;
+      text-align: center;
+
+      @media only screen and (max-width: 28.175em) {
+        display: block;
+      }
+    }
+  }
+
   &__2,
   &__3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 3rem;
+
+    @media only screen and (max-width: 28.175em) {
+      padding: 0 2rem;
+    }
   }
 
   &__2 {
     & > img {
       justify-self: flex-end;
       height: 75%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: auto;
+        width: 50vw;
+      }
     }
 
     .text-2 {
       font-size: 1.6rem;
       width: 50%;
       color: $color-brown;
+
+      @media only screen and (max-width: 28.175em) {
+        width: 100%;
+        border-bottom: 1px solid $color-black-4;
+        padding-bottom: 2rem;
+      }
     }
 
     .underline {
       position: relative;
       left: -3rem;
       margin-top: 1rem;
+
+      @media only screen and (max-width: 28.175em) {
+        display: none;
+      }
     }
   }
 
   &__3 {
+    position: relative;
+
+    @media only screen and (max-width: 28.175em) {
+      justify-content: flex-end;
+      display: flex;
+    }
+
     & > img {
       height: 75%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: unset;
+        width: 50vw;
+      }
     }
 
     .description {
       position: relative;
+
+      @media only screen and (max-width: 28.175em) {
+        position: absolute;
+        left: 0;
+        top: 50%;
+      }
     }
 
     .text-2 {
@@ -56,25 +114,50 @@
       width: 50%;
       color: $color-brown;
       margin-left: auto;
+
+      @media only screen and (max-width: 28.175em) {
+        width: 80%;
+        margin-left: 2rem;
+      }
     }
 
     .underline {
       position: absolute;
       right: -1rem;
       margin-top: 1rem;
+
+      @media only screen and (max-width: 28.175em) {
+        right: 5rem;
+        width: 80%;
+      }
     }
   }
 
   &__4 {
-    background-image: url('../assets/images/prewed-6.png');
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .img {
+      background-image: url('../assets/images/prewed-6.png');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: 50vh;
+      }
+    }
   }
 
   &__5 {
     display: grid;
     grid-template-columns: 3fr 4fr;
     gap: 4rem;
+
+    @media only screen and (max-width: 28.175em) {
+      height: 50vh;
+    }
   }
 
   &__6 {
@@ -83,8 +166,18 @@
     gap: 4rem;
     padding: 5% 4rem;
 
+    @media only screen and (max-width: 28.175em) {
+      height: 50vh;
+      padding: 5% 2rem;
+    }
+
     img {
       height: 80%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: unset;
+        width: calc(100vw / 2 - 4rem);
+      }
     }
 
     img:last-child {
@@ -105,6 +198,11 @@
 
     img {
       height: 80%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: unset;
+        width: 90vw;
+      }
     }
   }
 
@@ -114,8 +212,18 @@
     justify-items: center;
     padding: 5% 0;
 
+    @media only screen and (max-width: 28.175em) {
+      height: 50vh;
+      margin-bottom: 50vh;
+    }
+
     img {
       height: 80%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: unset;
+        width: calc(100vw / 3 - 15px);
+      }
 
       &:first-child {
         justify-self: flex-end;
@@ -136,11 +244,20 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
+    @media only screen and (max-width: 28.175em) {
+      align-items: center;
+    }
+
     .img {
       height: 140%;
       width: 100%;
       background-size: cover;
       background-position: center -60px;
+
+      @media only screen and (max-width: 28.175em) {
+        height: 50%;
+        background-position: center;
+      }
 
       &:first-child {
         background-image: url('../assets/images/prewed-13.png');
@@ -199,7 +316,16 @@
     transform: translateY(-50%);
     left: 36.5%;
     width: 50%;
+
+    @media only screen and (max-width: 28.175em) {
+      width: 100%;
+      top: unset;
+      left: unset;
+      transform: unset;
+      position: relative;
+    }
   }
+
   &__description {
     position: absolute;
     top: 85%;
@@ -212,7 +338,31 @@
     padding: 5rem 0 2rem 3rem;
     width: 105%;
     z-index: 0;
+
+    @media only screen and (max-width: 28.175em) {
+      right: 0;
+      left: unset;
+      text-align: right;
+      padding: 0 2rem;
+      width: 100%;
+      background-color: unset;
+      color: $color-brown;
+      top: unset;
+      position: relative;
+      padding-top: 2rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+        height: 1px;
+        width: 30%;
+        background-color: $color-black-4;
+      }
+    }
   }
+
   &__arrow-down {
     position: absolute;
     bottom: -4rem;
@@ -241,12 +391,21 @@
     top: 20%;
     height: 60%;
 
+    @media only screen and (max-width: 28.175em) {
+      height: 30%;
+      top: 0;
+    }
+
     &--1 {
       justify-self: flex-end;
     }
 
     &--2 {
       height: 50%;
+
+      @media only screen and (max-width: 28.175em) {
+        height: 20%;
+      }
 
       img {
         display: inline-block;
@@ -283,6 +442,10 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  @media only screen and (max-width: 28.175em) {
+    display: none;
+  }
 }
 
 .img-1 {

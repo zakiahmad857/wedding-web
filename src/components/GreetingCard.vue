@@ -6,7 +6,6 @@
       class="lined-textarea text-1"
       name=""
       id=""
-      rows="7"
     ></textarea>
     <p>With Love</p>
     <Input
@@ -111,6 +110,7 @@ export default {
   outline: 0;
   font-weight: 400;
   margin-bottom: 2rem;
+  height: 100%;
 }
 
 h1 {
