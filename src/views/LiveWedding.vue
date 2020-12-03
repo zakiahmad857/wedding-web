@@ -293,11 +293,16 @@ export default {
 
   &__text {
     position: absolute;
-    top: -10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 12rem;
+    top: -8rem;
+    left: -10rem;
+    height: 15rem;
     z-index: 10;
+
+    @media only screen and (max-width: 28.175em) {
+      left: 50%;
+      transform: translateX(-50%);
+      top: -15rem;
+    }
   }
 
   &__container {
