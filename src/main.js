@@ -8,9 +8,7 @@ import VuePlyr from 'vue-plyr';
 import 'vue-plyr/dist/vue-plyr.css';
 
 createApp(App)
-  .use(VuePlyr, {
-    plyr: {}
-  })
+  .use(VuePlyr)
   .use(store)
   .use(router)
   .mount('#app');

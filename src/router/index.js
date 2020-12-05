@@ -4,6 +4,9 @@ import Welcome from '../views/Welcome.vue';
 import LiveWedding from '../views/LiveWedding.vue';
 import PreWedding from '../views/PreWedding.vue';
 import BeforeEvent from '../views/BeforeEvent.vue';
+import Gallery from '../views/Gallery.vue';
+import Siraman from '../views/Siraman.vue';
+import Pengajian from '../views/Pengajian.vue';
 
 const routes = [
   {
@@ -37,14 +40,44 @@ const routes = [
     component: LiveWedding
   },
   {
+    path: '/id/gallery/pre-wedding',
+    name: 'PreWedding',
+    component: PreWedding
+  },
+  {
+    path: '/en/gallery/pre-wedding',
+    name: 'PreWedding-en',
+    component: PreWedding
+  },
+  {
     path: '/id/gallery',
     name: 'Gallery',
-    component: PreWedding
+    component: Gallery
   },
   {
     path: '/en/gallery',
     name: 'Gallery-en',
-    component: PreWedding
+    component: Gallery
+  },
+  {
+    path: '/id/gallery/siraman',
+    name: 'Siraman',
+    component: Siraman
+  },
+  {
+    path: '/en/gallery/siraman',
+    name: 'Siraman-en',
+    component: Siraman
+  },
+  {
+    path: '/id/gallery/pengajian',
+    name: 'Pengajian',
+    component: Pengajian
+  },
+  {
+    path: '/en/gallery/pengajian',
+    name: 'Pengajian-en',
+    component: Pengajian
   },
   {
     path: '/before-event',

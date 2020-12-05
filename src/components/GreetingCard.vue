@@ -104,6 +104,7 @@ export default {
   box-shadow: 0px -3px 6px 6px #fefdfc, 3px 4px 10px 5px #e0d1d1;
   color: $color-green-a;
   font-weight: 700;
+  width: 17rem;
 }
 
 .lined-textarea {
@@ -120,6 +121,10 @@ export default {
   font-weight: 400;
   margin-bottom: 2rem;
   height: 100%;
+
+  &::placeholder {
+    color: $color-green-b;
+  }
 
   @media only screen and (max-width: 90em) and (orientation: landscape) {
     margin-bottom: 1rem;

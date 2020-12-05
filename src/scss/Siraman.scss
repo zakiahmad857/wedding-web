@@ -1,0 +1,277 @@
+@import './variables.scss';
+
+.siraman {
+  &__1,
+  &__2,
+  &__3,
+  &__4,
+  &__5,
+  &__6,
+  &__7,
+  &__8,
+  &__9 {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: center;
+    background: $color-green-c;
+  }
+
+  &__1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media only screen and (orientation: portrait) {
+      justify-content: center;
+    }
+
+    .heading-0 {
+      color: $color-navy;
+      font-weight: 400;
+      margin-top: 3rem;
+
+      @media only screen and (orientation: portrait) {
+        margin-top: -3rem;
+      }
+    }
+
+    .text-3 {
+      max-width: 40rem;
+      width: 85%;
+      font-size: 1.2rem;
+      color: $color-blue;
+    }
+
+    .heading-0,
+    .text-3 {
+      text-align: center;
+    }
+
+    .video {
+      max-width: 40rem;
+      width: 80%;
+      height: auto;
+      position: relative;
+    }
+
+    .creator {
+      position: absolute;
+      right: 0;
+      bottom: -3.5rem;
+      text-align: right;
+      color: $color-blue;
+    }
+
+    .arrow-down {
+      position: absolute;
+      bottom: -4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      border-top-left-radius: 50%;
+      border-top-right-radius: 50%;
+      background: rgba(196, 196, 196, 0.1);
+      height: 8rem;
+      width: 8rem;
+      clip-path: inset(0% 0% 50% 0%);
+
+      img {
+        margin-top: 1.6rem;
+      }
+    }
+  }
+
+  &__2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .img {
+      background-image: url('../assets/images/prewed-5.png');
+      background-size: cover;
+      background-position: top center;
+      height: 80%;
+      width: 30%;
+
+      @media only screen and (orientation: portrait) {
+        width: 80%;
+        height: 70%;
+      }
+    }
+  }
+
+  &__4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .img {
+      background-image: url('../assets/images/prewed-6.png');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+
+      @media only screen and (orientation: portrait) {
+        height: 50%;
+      }
+    }
+  }
+
+  &__5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container {
+      display: grid;
+      grid-template-columns: 1.5fr 2fr;
+      gap: 2rem;
+
+      .img-container {
+        &:first-child {
+          justify-self: flex-end;
+          width: 70%;
+
+          img {
+            max-height: 80vh;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: top center;
+          }
+        }
+
+        &:last-child {
+          width: 85%;
+
+          img {
+            max-width: 50vw;
+            width: 100%;
+            object-fit: cover;
+            object-position: top center;
+          }
+        }
+      }
+    }
+  }
+
+  &__6 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: flex-end;
+    align-items: center;
+    gap: 2rem;
+
+    .img-container {
+      width: 100%;
+      max-width: 25vw;
+
+      @media only screen and (orientation: portrait) {
+        max-width: 35vw;
+      }
+
+      &:first-child {
+        margin-top: 7rem;
+      }
+
+      &:last-child {
+        margin-top: -7rem;
+        justify-self: flex-start;
+      }
+
+      img {
+        max-height: 70vh;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+  }
+
+  &__3,
+  &__7 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .img-container {
+      width: 85%;
+      height: 70%;
+
+      @media only screen and (orientation: portrait) {
+        height: unset;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  &__8 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center;
+
+    .img-container {
+      max-width: calc(100vw / 3 - 3rem);
+      height: 70%;
+
+      @media only screen and (orientation: portrait) {
+        height: unset;
+      }
+
+      &:first-child {
+        justify-self: flex-end;
+        margin-top: -8rem;
+      }
+
+      &:nth-child(2) {
+        justify-self: center;
+      }
+
+      &:last-child {
+        justify-self: flex-start;
+        margin-top: 8rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+  }
+
+  &__9 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+
+    .img-container {
+      width: 100%;
+      height: 100%;
+      max-height: 120vh;
+
+      @media only screen and (orientation: portrait) {
+        height: 50%;
+        max-height: unset;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+  }
+}

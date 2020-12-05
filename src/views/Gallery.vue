@@ -1,20 +1,26 @@
 <template>
   <div class="gallery">
     <decoration />
-    <navigation />
+    <navigation :disableBack="true" />
     <div class="gallery__container">
       <h1 class="heading-0 mb-2">GALLERY</h1>
       <div class="galleries">
-        <router-link :to="`/${state.lang}/gallery/pre-wedding`">
+        <router-link :to="`/${state.lang}/gallery/siraman`">
           <div class="gallery-item">
+            <img src="../assets/images/artwork-canvas.svg" alt="siraman" />
+            <h2 class="heading-1">Siraman</h2>
+          </div>
+        </router-link>
+        <router-link :to="`/${state.lang}/gallery/pre-wedding`">
+          <div class="gallery-item gallery-item--lg">
             <img src="../assets/images/artwork-canvas.svg" alt="pre-wedding" />
             <h2 class="heading-1">Pre-Wedding</h2>
           </div>
         </router-link>
-        <router-link :to="`/${state.lang}/gallery/engagement`">
+        <router-link :to="`/${state.lang}/gallery/pengajian`">
           <div class="gallery-item">
-            <img src="../assets/images/artwork-canvas.svg" alt="engagement" />
-            <h2 class="heading-1">Engagement</h2>
+            <img src="../assets/images/artwork-canvas.svg" alt="pengajian" />
+            <h2 class="heading-1">Pengajian</h2>
           </div>
         </router-link>
       </div>
@@ -64,14 +70,13 @@ export default {
 
 .galleries {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
 }
 
 .gallery-item {
   cursor: pointer;
   position: relative;
-
   transform: scale(1);
   transition: all 0.3s;
 
@@ -85,6 +90,18 @@ export default {
 
   img {
     height: 20rem;
+  }
+
+  &--lg {
+    transform: scale(1.2);
+
+    &:hover {
+      transform: scale(1.25);
+    }
+
+    &:active {
+      transform: scale(1.15);
+    }
   }
 }
 

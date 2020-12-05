@@ -26,8 +26,8 @@
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
-        <p class="text-3 sm">Phone Number xxx</p>
-        <p class="text-3 sm">Account Name xxx</p>
+        <p class="text-3 sm center">Phone Number xxx</p>
+        <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
           Copy
         </button>
@@ -39,8 +39,8 @@
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
-        <p class="text-3 sm">Phone Number xxx</p>
-        <p class="text-3 sm">Account Name xxx</p>
+        <p class="text-3 sm center">Phone Number xxx</p>
+        <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
           Copy
         </button>
@@ -51,8 +51,8 @@
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
         <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
-        <p class="text-3 sm">Phone Number xxx</p>
-        <p class="text-3 sm">Account Name xxx</p>
+        <p class="text-3 sm center">Phone Number xxx</p>
+        <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
           Copy
         </button>
@@ -291,9 +291,13 @@ export default {
 .text-3 {
   color: $color-blue-b;
 
+  &.center {
+    text-align: center;
+  }
+
   &.sm {
-    font-size: 1.4rem;
-    color: $color-blue;
+    font-size: 1.2rem;
+    color: $color-orange;
 
     @media only screen and (max-width: 90em) and (orientation: landscape) {
       font-size: 1rem;
@@ -305,8 +309,8 @@ export default {
   font-family: Bigilla;
   position: absolute;
   left: -2rem;
-  top: -5px;
-  font-size: 2rem;
+  top: -10px;
+  font-size: 2.4rem;
   color: $color-green-a;
 }
 </style>

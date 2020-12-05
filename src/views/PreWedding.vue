@@ -4,6 +4,11 @@
     <div class="pre-wedding__1">
       <h1 class="heading-0">Pre-<br />Wed</h1>
       <h1 class="heading mobile mb-1">PreWed</h1>
+      <p class="creator">
+        Photographed by Ivan Dimas Saputra <br />
+        Edited Photos by Gamma Winarno <br />
+        MUA by Raisha Monianti <br />
+      </p>
       <div class="one__img-container">
         <img
           class="img-1"
@@ -23,9 +28,11 @@
       <img src="../assets/images/prewed-4.png" alt="Pre Wedding" />
       <div class="description">
         <p class="text-2">
-          This is a description or a story of the photoshoot theme This is a
-          description or a story of the photoshoot theme This is a description
-          or a story of the photoshoot theme
+          Both of us have a deep, rooted, Javanese background, with Alfarra
+          having half Sundanese on her side. To honour that half, we decided to
+          use Sundanese attire on the ceremony whilst also having Javanese as
+          the core of the event. We respect and honour all our heritages very
+          much.
         </p>
         <img
           class="underline"
@@ -37,9 +44,8 @@
     <div class="pre-wedding__3">
       <div class="description">
         <p class="text-2">
-          This is a description or a story of the photoshoot theme This is a
-          description or a story of the photoshoot theme This is a description
-          or a story of the photoshoot theme
+          Fun fact: Alfarra looks exactly like her mother in these Javanese
+          series. It creeps everyone out. Especially Gamma.
         </p>
         <img
           class="underline"
@@ -59,9 +65,10 @@
       <div class="two__img-container two__img-container--2">
         <img src="../assets/images/prewed-3.png" alt="Pre Wedding" />
         <p class="mt-2 text-2">
-          This is a description or a story of the photoshoot theme This is a
-          description or a story of the photoshoot theme This is a description
-          or a story of the photoshoot theme
+          We bonded over a sport of Tennis, where we play twice a week together
+          for months. Gamma is getting really good, he hasn’t found the right
+          racket and shoes yet. Alfarra however, needs to work on running, she’s
+          definitely the lazy one.
         </p>
       </div>
     </div>

@@ -11,7 +11,7 @@
         :placeholder="state.multiLang[state.lang].placeholder"
         @on-change="handleChange"
       />
-      <Button @click="handleLogin" class="mb-5">{{
+      <Button @click="handleLogin" class="mb-5 btn-custom">{{
         state.lang === 'id' ? 'Masuk' : 'Login'
       }}</Button>
       <div class="langs">
@@ -89,6 +89,10 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/variables.scss';
 
+.btn-custom {
+  width: 16rem;
+}
+
 .login {
   height: 100vh;
   background-color: $color-green-c;
@@ -130,6 +134,7 @@ h2 {
 
 h1 {
   color: $color-blue-a;
+  font-weight: 400;
 }
 
 h2 {

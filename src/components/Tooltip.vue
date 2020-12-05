@@ -206,12 +206,14 @@ export default {
   }
 
   &__content {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   &__btn {
     font-size: 1rem;
     min-width: 7rem;
+    font-weight: 700;
+    padding: 0.5rem;
   }
 
   &__buttons {

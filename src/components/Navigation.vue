@@ -1,25 +1,46 @@
 <template>
   <nav class="nav-items">
-    <router-link :to="`/${state.lang}/live-wedding`">
+    <div class="home-back">
+      <router-link :to="`/${state.lang}/live-wedding`">
+        <div
+          :class="{ transparent: this.variant === 'transparent' }"
+          class="nav-item"
+        >
+          <img
+            v-if="this.variant === 'transparent'"
+            src="../assets/icons/icon-home-grey.svg"
+            alt="home"
+          />
+          <img v-else src="../assets/icons/icon-home.svg" alt="home" />
+        </div>
+      </router-link>
       <div
+        v-if="!this.disableBack"
+        @click="handleBack"
         :class="{ transparent: this.variant === 'transparent' }"
-        class="nav-item"
+        class="back nav-item ml-1"
       >
         <img
           v-if="this.variant === 'transparent'"
-          src="../assets/icons/icon-home-grey.svg"
-          alt="home"
+          src="../assets/icons/icon-back-grey.svg"
+          alt="back"
         />
-        <img v-else src="../assets/icons/icon-home.svg" alt="home" />
+        <img v-else src="../assets/icons/icon-back.svg" alt="back" />
       </div>
-    </router-link>
+    </div>
     <div
       :class="{ transparent: this.variant === 'transparent' }"
       class="nav-item"
     >
       <img
-        v-if="!isPlay"
+        v-if="this.variant === 'transparent' && !isPlay"
         src="../assets/icons/icon-sound-on-grey.svg"
+        alt="home"
+        @click.prevent="this.playMusic"
+      />
+      <img
+        v-else-if="!isPlay"
+        src="../assets/icons/icon-sound-on.svg"
         alt="home"
         @click.prevent="this.playMusic"
       />
@@ -50,21 +71,30 @@
 
 <script>
 import { computed, reactive } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import store from '../store';
 
 export default {
   name: 'Navigation',
   props: {
-    variant: String
+    variant: String,
+    disableBack: {
+      type: Boolean,
+      default: false
+    }
   },
   setup() {
     const state = reactive({ lang: '' });
     const route = useRoute();
+    const router = useRouter();
     const isPlay = computed(() => store.state.isPlay);
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
-    return { state, isPlay };
+    function handleBack() {
+      router.back();
+    }
+
+    return { state, isPlay, handleBack };
   },
   mounted() {
     if (this.isPlay) {
@@ -92,8 +122,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4rem;
-  height: 6rem;
+  padding: 0 2rem;
+  height: 8rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -124,7 +154,12 @@ export default {
   }
 
   img {
-    height: 4rem;
+    height: 6rem;
   }
+}
+
+.home-back {
+  display: flex;
+  align-items: center;
 }
 </style>

@@ -49,6 +49,10 @@ export default {
   color: $color-orange;
   transition: all 0.3s;
 
+  &::placeholder {
+    color: $color-green-b;
+  }
+
   &.active {
     border-bottom: 1px solid $color-orange;
   }
