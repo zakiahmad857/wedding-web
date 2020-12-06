@@ -90,9 +90,8 @@
     align-items: center;
 
     .img {
-      background-image: url('../assets/images/prewed-5.png');
-      background-size: cover;
-      background-position: top center;
+      object-fit: cover;
+      object-position: top center;
       height: 80%;
       width: 30%;
 
@@ -108,9 +107,8 @@
     align-items: center;
     justify-content: center;
     .img {
-      background-image: url('../assets/images/prewed-6.png');
-      background-size: cover;
-      background-position: center;
+      object-fit: cover;
+      object-position: center;
       height: 100%;
       width: 100%;
 

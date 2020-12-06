@@ -1,4 +1,5 @@
 <template>
+  <loading :class="{ collapsed: state.isPageLoading.length >= 14 }" />
   <div class="siraman">
     <navigation />
     <div class="siraman__1">
@@ -31,60 +32,64 @@
         </div>
       </div>
       <div @click="scrollToTwo" class="arrow-down">
-        <img src="../assets/icons/icon-arrow-down.svg" alt="Arrow Down" />
+        <img
+          @load="handleLoad"
+          src="../assets/icons/icon-arrow-down.svg"
+          alt="Arrow Down"
+        />
       </div>
     </div>
     <div ref="siramanTwo" class="siraman__2">
-      <div class="img"></div>
+      <img @load="handleLoad" class="img" src="../assets/images/prewed-5.png" />
     </div>
     <div class="siraman__3">
       <div class="img-container">
-        <img src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
       </div>
     </div>
     <div class="siraman__4">
-      <div class="img"></div>
+      <img @load="handleLoad" src="../assets/images/prewed-6.png" class="img" />
     </div>
     <div class="siraman__5">
       <div class="container">
         <div class="img-container">
-          <img src="../assets/images/prewed-2.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-2.png" alt="" />
         </div>
         <div class="img-container">
-          <img src="../assets/images/prewed-3.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-3.png" alt="" />
         </div>
       </div>
     </div>
     <div class="siraman__6">
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
     </div>
     <div class="siraman__7">
       <div class="img-container">
-        <img src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
       </div>
     </div>
     <div class="siraman__8">
       <div class="img-container">
-        <img src="../assets/images/prewed-10.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-10.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-11.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-11.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-12.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-12.png" alt="" />
       </div>
     </div>
     <div class="siraman__9">
       <div class="img-container">
-        <img src="../assets/images/prewed-13.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-13.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-14.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-14.png" alt="" />
       </div>
     </div>
     <back-to-top @click="scrollToTop" :isScroll="state.isScroll" />
@@ -95,16 +100,19 @@
 import { onMounted, reactive, ref } from 'vue';
 import Navigation from '../components/Navigation.vue';
 import BackToTop from '../components/BackToTop.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Siraman',
   components: {
     Navigation,
-    BackToTop
+    BackToTop,
+    Loading
   },
   setup() {
     const state = reactive({
-      isScroll: false
+      isScroll: false,
+      isPageLoading: []
     });
     const siramanTwo = ref(null);
 
@@ -114,6 +122,11 @@ export default {
 
       document.addEventListener('scroll', handleScroll);
     });
+
+    function handleLoad() {
+      state.isPageLoading.push(true);
+      console.log(state.isPageLoading);
+    }
 
     function scrollToTwo() {
       const { top } = siramanTwo.value.getBoundingClientRect();
@@ -134,7 +147,7 @@ export default {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
-    return { scrollToTwo, siramanTwo, state, scrollToTop };
+    return { scrollToTwo, siramanTwo, state, scrollToTop, handleLoad };
   }
 };
 </script>
