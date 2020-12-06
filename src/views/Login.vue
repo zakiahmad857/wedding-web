@@ -1,18 +1,32 @@
 <template>
   <div class="login">
-    <loading v-if="state.isLoading.length >= 2" />
+    <loading v-if="state.isLoading.length < 4" />
     <img
       @load="handleLoad"
-      v-if="state.isLoading.length >= 2"
+      v-if="state.isLoading.length < 4"
       style="position: absolute"
       src="../assets/images/image-welcome.svg"
       alt=""
     />
     <img
       @load="handleLoad"
-      v-if="state.isLoading.length >= 2"
+      v-if="state.isLoading.length < 4"
       style="position: absolute"
       src="../assets/images/image-couple.svg"
+      alt=""
+    />
+    <img
+      @load="handleLoad"
+      v-if="state.isLoading.length < 4"
+      style="position: absolute"
+      src="../assets/images/bg-login-flower-top.png"
+      alt=""
+    />
+    <img
+      @load="handleLoad"
+      v-if="state.isLoading.length < 4"
+      style="position: absolute"
+      src="../assets/images/bg-login-flower-bottom.png"
       alt=""
     />
     <decoration />
