@@ -1,4 +1,5 @@
 <template>
+  <loading v-if="state.isLoading < 3" />
   <div class="gallery">
     <decoration />
     <navigation :disableBack="true" />
@@ -7,19 +8,31 @@
       <div class="galleries">
         <router-link :to="`/${state.lang}/gallery/siraman`">
           <div class="gallery-item">
-            <img src="../assets/images/artwork-canvas.svg" alt="siraman" />
+            <img
+              @load="handleLoad"
+              src="../assets/images/artwork-canvas.svg"
+              alt="siraman"
+            />
             <h2 class="heading-1">Siraman</h2>
           </div>
         </router-link>
         <router-link :to="`/${state.lang}/gallery/pre-wedding`">
           <div class="gallery-item gallery-item--lg">
-            <img src="../assets/images/artwork-canvas.svg" alt="pre-wedding" />
+            <img
+              @load="handleLoad"
+              src="../assets/images/artwork-canvas.svg"
+              alt="pre-wedding"
+            />
             <h2 class="heading-1">Pre-Wedding</h2>
           </div>
         </router-link>
         <router-link :to="`/${state.lang}/gallery/pengajian`">
           <div class="gallery-item">
-            <img src="../assets/images/artwork-canvas.svg" alt="pengajian" />
+            <img
+              @load="handleLoad"
+              src="../assets/images/artwork-canvas.svg"
+              alt="pengajian"
+            />
             <h2 class="heading-1">Pengajian</h2>
           </div>
         </router-link>
@@ -33,21 +46,27 @@ import { reactive } from 'vue';
 import Decoration from '../components/Decoration.vue';
 import { useRoute } from 'vue-router';
 import Navigation from '../components/Navigation.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Gallery',
   components: {
     Decoration,
-    Navigation
+    Navigation,
+    Loading
   },
   setup() {
-    const state = reactive({ lang: '' });
+    const state = reactive({ lang: '', isLoading: [] });
 
     const route = useRoute();
 
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
-    return { state };
+    function handleLoad() {
+      state.isLoading.push(true);
+    }
+
+    return { state, handleLoad };
   }
 };
 </script>

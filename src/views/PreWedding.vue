@@ -1,4 +1,5 @@
 <template>
+  <loading v-if="this.isLoading.length < 13" />
   <div class="pre-wedding">
     <navigation variant="transparent" />
     <div class="pre-wedding__1">
@@ -11,6 +12,7 @@
       </p>
       <div class="one__img-container">
         <img
+          @load="this.handleLoad"
           class="img-1"
           src="../assets/images/prewed-1.png"
           alt="Pre Wedding"
@@ -21,11 +23,19 @@
         </div>
       </div>
       <div @click="this.scrollToTwo" class="one__arrow-down">
-        <img src="../assets/icons/icon-arrow-down.svg" alt="Arrow Down" />
+        <img
+          @load="this.handleLoad"
+          src="../assets/icons/icon-arrow-down.svg"
+          alt="Arrow Down"
+        />
       </div>
     </div>
     <div ref="preWed2" class="pre-wedding__2">
-      <img src="../assets/images/prewed-4.png" alt="Pre Wedding" />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-4.png"
+        alt="Pre Wedding"
+      />
       <div class="description">
         <p class="text-2">
           Both of us have a deep, rooted, Javanese background, with Alfarra
@@ -35,6 +45,7 @@
           much.
         </p>
         <img
+          @load="this.handleLoad"
           class="underline"
           src="../assets/images/prewed-underline.svg"
           alt="underline"
@@ -48,6 +59,7 @@
           series. It creeps everyone out. Especially Gamma.
         </p>
         <img
+          @load="this.handleLoad"
           class="underline"
           src="../assets/images/prewed-underline.svg"
           alt="underline"
@@ -60,10 +72,18 @@
     </div>
     <div class="pre-wedding__5">
       <div class="two__img-container two__img-container--1">
-        <img src="../assets/images/prewed-2.png" alt="Pre Wedding" />
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-2.png"
+          alt="Pre Wedding"
+        />
       </div>
       <div class="two__img-container two__img-container--2">
-        <img src="../assets/images/prewed-3.png" alt="Pre Wedding" />
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-3.png"
+          alt="Pre Wedding"
+        />
         <p class="mt-2 text-2">
           We bonded over a sport of Tennis, where we play twice a week together
           for months. Gamma is getting really good, he hasn’t found the right
@@ -73,16 +93,36 @@
       </div>
     </div>
     <div class="pre-wedding__6">
-      <img src="../assets/images/prewed-7.png" alt="Pre Wedding" />
-      <img src="../assets/images/prewed-8.png" alt="Pre Wedding" />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-7.png"
+        alt="Pre Wedding"
+      />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-8.png"
+        alt="Pre Wedding"
+      />
     </div>
     <div class="pre-wedding__7">
       <img src="../assets/images/prewed-9.png" alt="Pre Wedding" />
     </div>
     <div class="pre-wedding__8">
-      <img src="../assets/images/prewed-10.png" alt="Pre Wedding" />
-      <img src="../assets/images/prewed-11.png" alt="Pre Wedding" />
-      <img src="../assets/images/prewed-12.png" alt="Pre Wedding" />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-10.png"
+        alt="Pre Wedding"
+      />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-11.png"
+        alt="Pre Wedding"
+      />
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-12.png"
+        alt="Pre Wedding"
+      />
     </div>
     <div class="pre-wedding__9">
       <div class="img"></div>
@@ -94,7 +134,11 @@
       class="back-to-top"
     >
       <div class="back-to-top__container">
-        <img src="../assets/icons/icon-arrow-down.svg" alt="" />
+        <img
+          @load="this.handleLoad"
+          src="../assets/icons/icon-arrow-down.svg"
+          alt=""
+        />
       </div>
       <p class="text-3 mt-1">Back To Top</p>
     </div>
@@ -102,13 +146,14 @@
 </template>
 
 <script>
+import Loading from '../components/Loading.vue';
 import Navigation from '../components/Navigation.vue';
 
 export default {
-  components: { Navigation },
+  components: { Navigation, Loading },
   name: 'PreWedding',
   data() {
-    return { isScroll: false, isPlay: false };
+    return { isScroll: false, isPlay: false, isLoading: [] };
   },
   mounted() {
     const root = document.getElementsByTagName('html')[0];
@@ -138,6 +183,9 @@ export default {
       } else {
         this.isScroll = false;
       }
+    },
+    handleLoad() {
+      this.isLoading.push(true);
     }
   }
 };

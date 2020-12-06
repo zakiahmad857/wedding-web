@@ -8,7 +8,7 @@
       alt="sound-off"
     />
   </div>
-  <div v-else class="welcome">
+  <div class="welcome">
     <decoration />
     <div
       class="welcome-step-1"
@@ -23,7 +23,7 @@
         alt="welcome"
         class="welcome-img"
         :class="{
-          show: state.currentStep === 'step-1',
+          show: state.currentStep === 'step-1' && state.isLoading.length >= 2,
           hide: state.currentStep === ''
         }"
       />
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
 import GreetingCard from '../components/GreetingCard.vue';
@@ -82,6 +82,17 @@ export default {
 
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
+    watch(state.isLoading, async (isLoading, prevLoading) => {
+      if (isLoading.length >= 2) {
+        await promiseTimeOut(100);
+        state.currentStep = 'step-1';
+        await promiseTimeOut(3000);
+        state.currentStep = 'step-2-showing';
+        await promiseTimeOut(300);
+        state.currentStep = 'step-2';
+      }
+    });
+
     async function handleSend(_e) {
       state.currentStep = 'step-2-collapsing';
       await promiseTimeOut(1000);
@@ -99,19 +110,11 @@ export default {
       });
     }
 
-    function handleLoad() {
+    async function handleLoad() {
       state.isLoading.push(true);
     }
 
     return { state, handleSend, handleDone, handleLoad };
-  },
-  async mounted() {
-    await promiseTimeOut(100);
-    this.state.currentStep = 'step-1';
-    await promiseTimeOut(3000);
-    this.state.currentStep = 'step-2-showing';
-    await promiseTimeOut(300);
-    this.state.currentStep = 'step-2';
   }
 };
 </script>

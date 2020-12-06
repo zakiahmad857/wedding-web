@@ -1,4 +1,5 @@
 <template>
+  <loading v-if="state.isLoading.length < 13" />
   <div class="pengajian">
     <navigation />
     <div class="pengajian__1">
@@ -31,7 +32,11 @@
         </div>
       </div>
       <div @click="scrollToTwo" class="arrow-down">
-        <img src="../assets/icons/icon-arrow-down.svg" alt="Arrow Down" />
+        <img
+          @load="handleLoad"
+          src="../assets/icons/icon-arrow-down.svg"
+          alt="Arrow Down"
+        />
       </div>
     </div>
     <div ref="siramanTwo" class="pengajian__2">
@@ -39,10 +44,10 @@
     </div>
     <div class="pengajian__3">
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
     </div>
     <div class="pengajian__4">
@@ -51,43 +56,43 @@
     <div class="pengajian__5">
       <div class="container">
         <div class="img-container">
-          <img src="../assets/images/prewed-2.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-2.png" alt="" />
         </div>
         <div class="img-container">
-          <img src="../assets/images/prewed-3.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-3.png" alt="" />
         </div>
       </div>
     </div>
     <div class="pengajian__6">
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
       </div>
     </div>
     <div class="pengajian__7">
       <div class="img-container">
-        <img src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
       </div>
     </div>
     <div class="pengajian__8">
       <div class="img-container">
-        <img src="../assets/images/prewed-10.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-10.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-11.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-11.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-12.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-12.png" alt="" />
       </div>
     </div>
     <div class="pengajian__9">
       <div class="img-container">
-        <img src="../assets/images/prewed-13.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-13.png" alt="" />
       </div>
       <div class="img-container">
-        <img src="../assets/images/prewed-14.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-14.png" alt="" />
       </div>
     </div>
     <back-to-top @click="scrollToTop" :isScroll="state.isScroll" />
@@ -98,16 +103,19 @@
 import { onMounted, reactive, ref } from 'vue';
 import Navigation from '../components/Navigation.vue';
 import BackToTop from '../components/BackToTop.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Pengajian',
   components: {
     Navigation,
-    BackToTop
+    BackToTop,
+    Loading
   },
   setup() {
     const state = reactive({
-      isScroll: false
+      isScroll: false,
+      isLoading: []
     });
     const siramanTwo = ref(null);
 
@@ -137,7 +145,11 @@ export default {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
-    return { scrollToTwo, siramanTwo, state, scrollToTop };
+    function handleLoad() {
+      state.isLoading.push(true);
+    }
+
+    return { scrollToTwo, siramanTwo, state, scrollToTop, handleLoad };
   }
 };
 </script>
