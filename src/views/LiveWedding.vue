@@ -1,4 +1,5 @@
 <template>
+  <loading v-if="state.isLoading.length < 7" />
   <div class="live-wedding">
     <div v-if="state.blur" class="overlay-blur"></div>
     <div
@@ -25,16 +26,22 @@
     </div>
     <div class="utils">
       <div id="step-6" @click.prevent="this.startTour" class="util">
-        <img src="../assets/icons/icon-info.svg" alt="info" />
+        <img
+          @load="handleLoad"
+          src="../assets/icons/icon-info.svg"
+          alt="info"
+        />
       </div>
       <div id="step-5" class="util">
         <img
+          @load="handleLoad"
           v-if="!isPlay"
           @click="this.playMusic"
           src="../assets/icons/icon-sound-on.svg"
           alt="sound-on"
         />
         <img
+          @load="handleLoad"
           v-else
           @click="this.stopMusic"
           src="../assets/icons/icon-sound-off.svg"
@@ -59,6 +66,7 @@
     <nav class="navigation">
       <router-link :to="`/${state.lang}/gallery`">
         <img
+          @load="handleLoad"
           id="step-2"
           class="nav-item"
           src="../assets/images/nav-gallery.svg"
@@ -66,6 +74,7 @@
         />
       </router-link>
       <img
+        @load="handleLoad"
         id="step-3"
         @click="handleClose('souvenir')"
         class="nav-item nav-item--souvenir"
@@ -74,6 +83,7 @@
       />
       <div style="position: relative">
         <img
+          @load="handleLoad"
           @click="handleClose('amplop')"
           id="step-4"
           class="nav-item"
@@ -81,6 +91,7 @@
           alt="amplop"
         />
         <img
+          @load="handleLoad"
           class="img-pot"
           src="../assets/images/image-pot.svg"
           alt="amplop"
@@ -90,6 +101,7 @@
     <div id="step-1" class="video">
       <div class="video__container">
         <img
+          @load="handleLoad"
           src="../assets/images/wedding-gamma-alfarra.png"
           alt="Wedding Gamma Alfarra"
           class="video__text"
@@ -122,17 +134,19 @@ import Amplop from '../components/Amplop.vue';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
 import Tour from '../components/Tour.vue';
 import TourMultiLang from '../json/Tour.json';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'LiveWedding',
-  components: { Souvenir, Amplop, Tour },
+  components: { Souvenir, Amplop, Tour, Loading },
   setup() {
     const state = reactive({
       routeBefore: '',
       lang: '',
       souvenir: 'collapsed',
       amplop: 'collapsed',
-      blur: false
+      blur: false,
+      isLoading: []
     });
 
     const steps = computed(() => [
@@ -223,7 +237,11 @@ export default {
       }
     }
 
-    return { state, handleClose, isPlay, steps };
+    function handleLoad() {
+      state.isLoading.push(true);
+    }
+
+    return { state, handleClose, isPlay, steps, handleLoad };
   },
   mounted() {
     const cookie = Cookies.get('isFinishedTutorial');

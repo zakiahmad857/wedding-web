@@ -1,5 +1,5 @@
 <template>
-  <loading :class="{ collapsed: state.isPageLoading.length >= 14 }" />
+  <loading v-if="state.isPageLoading.length < 14" />
   <div class="siraman">
     <navigation />
     <div class="siraman__1">
@@ -125,7 +125,6 @@ export default {
 
     function handleLoad() {
       state.isPageLoading.push(true);
-      console.log(state.isPageLoading);
     }
 
     function scrollToTwo() {

@@ -10,10 +10,20 @@
 </template>
 
 <script>
+import { onMounted, onUnmounted } from 'vue';
 import LoadingAnimation from './LoadingAnimation.vue';
 export default {
   name: 'Loading',
-  components: { LoadingAnimation }
+  components: { LoadingAnimation },
+  setup() {
+    onMounted(() => {
+      document.body.style.overflow = 'hidden';
+    });
+
+    onUnmounted(() => {
+      document.body.style.overflow = 'unset';
+    });
+  }
 };
 </script>
 

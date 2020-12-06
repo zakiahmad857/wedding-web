@@ -1,5 +1,14 @@
 <template>
-  <div class="welcome">
+  <div v-if="state.isLoading.length < 2" class="img-to-loaded">
+    <loading />
+    <img @load="handleLoad" src="../assets/images/bg-live-wedding.png" alt="" />
+    <img
+      @load="handleLoad"
+      src="../assets/icons/icon-sound-off.svg"
+      alt="sound-off"
+    />
+  </div>
+  <div v-else class="welcome">
     <decoration />
     <div
       class="welcome-step-1"
@@ -57,14 +66,16 @@ import { promiseTimeOut } from '../utils/promiseTimeOut';
 import GreetingCard from '../components/GreetingCard.vue';
 import Thankyou from '../components/Thankyou.vue';
 import Decoration from '../components/Decoration.vue';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Welcome',
-  components: { GreetingCard, Thankyou, Decoration },
+  components: { GreetingCard, Thankyou, Decoration, Loading },
   setup() {
     const state = reactive({
       currentStep: '',
-      lang: ''
+      lang: '',
+      isLoading: []
     });
     const route = useRoute();
     const router = useRouter();
@@ -88,7 +99,11 @@ export default {
       });
     }
 
-    return { state, handleSend, handleDone };
+    function handleLoad() {
+      state.isLoading.push(true);
+    }
+
+    return { state, handleSend, handleDone, handleLoad };
   },
   async mounted() {
     await promiseTimeOut(100);
