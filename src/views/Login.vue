@@ -1,5 +1,20 @@
 <template>
   <div class="login">
+    <loading v-if="state.isLoading.length >= 2" />
+    <img
+      @load="handleLoad"
+      v-if="state.isLoading.length >= 2"
+      style="position: absolute"
+      src="../assets/images/image-welcome.svg"
+      alt=""
+    />
+    <img
+      @load="handleLoad"
+      v-if="state.isLoading.length >= 2"
+      style="position: absolute"
+      src="../assets/images/image-couple.svg"
+      alt=""
+    />
     <decoration />
     <div class="login__container">
       <h1 class="heading-0">
@@ -54,13 +69,15 @@ import Input from '@/components/Input.vue';
 import { reactive } from 'vue';
 import Decoration from '../components/Decoration.vue';
 import LoginMultiLang from '../json/Login.json';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Login',
   components: {
     Button,
     Input,
-    Decoration
+    Decoration,
+    Loading
   },
   setup() {
     const route = useRoute();
@@ -68,20 +85,39 @@ export default {
     const state = reactive({
       lang: 'id',
       inputVal: '',
-      multiLang: LoginMultiLang
+      multiLang: LoginMultiLang,
+      isLoading: []
     });
 
     if (route.path.startsWith('/en')) state.lang = 'en';
+
+    function handleLoad() {
+      state.isLoading.push(true);
+    }
 
     function handleChange(val) {
       state.inputVal = val;
     }
 
     function handleLogin() {
-      router.push(`/${state.lang}/welcome`);
+      if (state.inputVal === 'guest.alfarra') {
+        router.push(`/${state.lang}/welcome`);
+      } else if (state.inputVal.trim().length === 0) {
+        alert(
+          state.lang === 'id'
+            ? 'Mohon masukkan ID Guest'
+            : 'Please input the ID Guest'
+        );
+      } else {
+        alert(
+          state.lang === 'id'
+            ? 'Mohon maaf ID Guest anda tidak valid'
+            : 'Sorry your ID Guest is invalid'
+        );
+      }
     }
 
-    return { handleChange, state, handleLogin };
+    return { handleChange, state, handleLogin, handleLoad };
   }
 };
 </script>
