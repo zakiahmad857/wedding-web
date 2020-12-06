@@ -57,7 +57,7 @@
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/gIB2egm7tL8"
+              src="https://www.youtube.com/embed/5PJXAHzqr8U"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -100,7 +100,7 @@ export default {
     if (this.isPlay) {
       setTimeout(() => {
         this.playMusic();
-      }, 100);
+      }, 1000);
     }
   },
   methods: {

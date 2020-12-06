@@ -82,7 +82,7 @@ export default {
 
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
-    watch(state.isLoading, async (isLoading, prevLoading) => {
+    watch(state.isLoading, async (isLoading, _prevLoading) => {
       if (isLoading.length >= 2) {
         await promiseTimeOut(100);
         state.currentStep = 'step-1';
