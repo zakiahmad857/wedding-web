@@ -39,6 +39,7 @@ export default {
     box-shadow: 0px -3px 6px 6px #fefdfc, 3px 4px 10px 5px #e0d1d1;
     color: $color-green-a;
     font-weight: 700;
+    border: 1px solid #f6f5f5;
   }
 
   &:active {

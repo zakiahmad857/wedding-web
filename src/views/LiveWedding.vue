@@ -53,7 +53,7 @@
               <iframe
                 width="560"
                 height="315"
-                src="https://www.youtube.com/embed/5PJXAHzqr8U"
+                src="https://www.youtube.com/embed/5PJXAHzqr8U?autoplay=1"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -111,7 +111,7 @@
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/gIB2egm7tL8"
+              src="https://www.youtube.com/embed/4m7A3i5CR-g?autoplay=1"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -249,15 +249,19 @@ export default {
       this.startTour();
     }
 
-    if (this.isPlay) {
-      setTimeout(() => {
-        this.playMusic();
-      }, 1000);
-    }
+    setTimeout(() => {
+      this.playMusic();
+    }, 3000);
 
     const player = this.$refs.videoPlyr.player;
-
+    player.muted = true;
     player.on('play', () => {
+      this.stopMusic();
+    });
+    player.on('volumechange', () => {
+      this.stopMusic();
+    });
+    player.on('enterfullscreen', () => {
       this.stopMusic();
     });
   },
@@ -466,6 +470,14 @@ export default {
 
   img {
     height: 4rem;
+  }
+}
+</style>
+
+<style lang="scss">
+.live-wedding {
+  .plyr__video-embed {
+    padding-bottom: 56.25% !important;
   }
 }
 </style>

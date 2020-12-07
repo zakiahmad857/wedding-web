@@ -12,7 +12,7 @@
       class="mb-4 input-custom"
       :placeholder="state.multiLang[lang].placeholder"
     />
-    <Button @click="handleClick" class="btn-custom">{{
+    <Button @click="handleClick" class="btn--grey btn-custom">{{
       state.multiLang[lang].button
     }}</Button>
   </div>

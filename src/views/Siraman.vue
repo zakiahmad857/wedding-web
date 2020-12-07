@@ -115,6 +115,7 @@ export default {
       isPageLoading: []
     });
     const siramanTwo = ref(null);
+    const iframe = ref(null);
 
     onMounted(() => {
       const root = document.getElementsByTagName('html')[0];
@@ -146,7 +147,7 @@ export default {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
-    return { scrollToTwo, siramanTwo, state, scrollToTop, handleLoad };
+    return { scrollToTwo, siramanTwo, state, scrollToTop, handleLoad, iframe };
   }
 };
 </script>
