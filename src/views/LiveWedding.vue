@@ -258,7 +258,7 @@ export default {
       player.muted = true;
       await promiseTimeOut(1000);
       player.play();
-      await promiseTimeOut(200);
+      await promiseTimeOut(500);
       this.playMusic();
 
       player.on('play', () => {
