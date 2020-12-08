@@ -47,6 +47,7 @@ import Decoration from '../components/Decoration.vue';
 import { useRoute } from 'vue-router';
 import Navigation from '../components/Navigation.vue';
 import Loading from '../components/Loading.vue';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 
 export default {
   name: 'Gallery',
@@ -62,7 +63,8 @@ export default {
 
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
-    function handleLoad() {
+    async function handleLoad() {
+      await promiseTimeOut(1000);
       state.isLoading.push(true);
     }
 

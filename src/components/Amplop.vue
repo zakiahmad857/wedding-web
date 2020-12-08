@@ -10,10 +10,10 @@
       class="ic-close"
     />
     <div class="bg-top">
-      <img src="../assets/images/bg-amplop-top.png" alt="" />
+      <img src="../assets/images/bg-amplop-top.webp" alt="" />
     </div>
     <div class="bg-bottom">
-      <img src="../assets/images/bg-amplop-bottom.png" alt="" />
+      <img src="../assets/images/bg-amplop-bottom.webp" alt="" />
     </div>
     <h1 class="heading-0 mb-1">E-AMPLOP</h1>
     <p class="text-2">
@@ -25,7 +25,7 @@
         <p class="text-3 mb-1">
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
-        <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
+        <img src="../assets/images/qr-ovo.webp" alt="qr-ovo" />
         <p class="text-3 sm center">Phone Number xxx</p>
         <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
@@ -38,7 +38,7 @@
         <p class="text-3 mb-1">
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
-        <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
+        <img src="../assets/images/qr-ovo.webp" alt="qr-ovo" />
         <p class="text-3 sm center">Phone Number xxx</p>
         <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
@@ -50,7 +50,7 @@
         <p class="text-3 mb-1">
           {{ lang === 'id' ? 'Kirim' : 'Send' }} via <strong>OVO</strong>
         </p>
-        <img src="../assets/images/qr-ovo.png" alt="qr-ovo" />
+        <img src="../assets/images/qr-ovo.webp" alt="qr-ovo" />
         <p class="text-3 sm center">Phone Number xxx</p>
         <p class="text-3 sm center">Account Name xxx</p>
         <button @click.prevent="handleCopy($event, '088976512')" class="copy">
@@ -293,6 +293,10 @@ export default {
 
   &.center {
     text-align: center;
+
+    @media only screen and (max-width: 28.175em) {
+      text-align: left;
+    }
   }
 
   &.sm {

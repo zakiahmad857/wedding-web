@@ -44,10 +44,10 @@
     </div>
     <div class="pengajian__3">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
     </div>
     <div class="pengajian__4">
@@ -56,43 +56,43 @@
     <div class="pengajian__5">
       <div class="container">
         <div class="img-container">
-          <img @load="handleLoad" src="../assets/images/prewed-2.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-2.webp" alt="" />
         </div>
         <div class="img-container">
-          <img @load="handleLoad" src="../assets/images/prewed-3.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-3.webp" alt="" />
         </div>
       </div>
     </div>
     <div class="pengajian__6">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
     </div>
     <div class="pengajian__7">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.webp" alt="" />
       </div>
     </div>
     <div class="pengajian__8">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-10.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-10.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-11.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-11.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-12.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-12.webp" alt="" />
       </div>
     </div>
     <div class="pengajian__9">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-13.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-13.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-14.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-14.webp" alt="" />
       </div>
     </div>
     <back-to-top @click="scrollToTop" :isScroll="state.isScroll" />
@@ -104,6 +104,7 @@ import { onMounted, reactive, ref } from 'vue';
 import Navigation from '../components/Navigation.vue';
 import BackToTop from '../components/BackToTop.vue';
 import Loading from '../components/Loading.vue';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 
 export default {
   name: 'Pengajian',
@@ -145,7 +146,8 @@ export default {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }
 
-    function handleLoad() {
+    async function handleLoad() {
+      await promiseTimeOut(1000);
       state.isLoading.push(true);
     }
 

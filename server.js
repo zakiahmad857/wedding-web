@@ -7,4 +7,6 @@ app.use('/id', serveStatic(path.join(__dirname, 'dist')));
 app.use('/en', serveStatic(path.join(__dirname, 'dist')));
 app.use('*', serveStatic(path.join(__dirname, 'dist')));
 const port = process.env.PORT || 80;
-app.listen(port);
+app.listen(port, () => {
+  console.log('listening to port ' + port);
+});

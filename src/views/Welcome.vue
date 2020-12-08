@@ -1,7 +1,11 @@
 <template>
   <div v-if="state.isLoading.length < 2" class="img-to-loaded">
     <loading />
-    <img @load="handleLoad" src="../assets/images/bg-live-wedding.png" alt="" />
+    <img
+      @load="handleLoad"
+      src="../assets/images/bg-live-wedding.webp"
+      alt=""
+    />
     <img
       @load="handleLoad"
       src="../assets/icons/icon-sound-off.svg"

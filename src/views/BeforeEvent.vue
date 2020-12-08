@@ -3,11 +3,11 @@
     <div class="before-event__bg" />
     <div class="before-event__container">
       <div class="couple">
-        <img src="../assets/images/img-bride.png" alt="bride" />
+        <img src="../assets/images/img-bride.webp" alt="bride" />
       </div>
       <div class="info">
         <img
-          src="../assets/images/text-gamma-alfarra-before-event.png"
+          src="../assets/images/text-gamma-alfarra-before-event.webp"
           alt="gamma-alfarra"
           class="mb-2"
         />
@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="couple">
-        <img src="../assets/images/img-groom.png" alt="groom" />
+        <img src="../assets/images/img-groom.webp" alt="groom" />
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@ export default {
     left: 0;
     bottom: 0;
     width: 100%;
-    background: url('../assets/images/bg-before-event.png');
+    background: url('../assets/images/bg-before-event.webp');
     height: 40vh;
     background-size: cover;
     background-position: center top;

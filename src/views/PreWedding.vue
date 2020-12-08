@@ -14,7 +14,7 @@
         <img
           @load="this.handleLoad"
           class="img-1"
-          src="../assets/images/prewed-1.png"
+          src="../assets/images/prewed-1.webp"
           alt="Pre Wedding"
         />
         <div class="one__description">
@@ -33,7 +33,7 @@
     <div ref="preWed2" class="pre-wedding__2">
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-4.png"
+        src="../assets/images/prewed-4.webp"
         alt="Pre Wedding"
       />
       <div class="description">
@@ -65,7 +65,7 @@
           alt="underline"
         />
       </div>
-      <img src="../assets/images/prewed-5.png" alt="Pre Wedding" />
+      <img src="../assets/images/prewed-5.webp" alt="Pre Wedding" />
     </div>
     <div class="pre-wedding__4">
       <div class="img"></div>
@@ -74,14 +74,14 @@
       <div class="two__img-container two__img-container--1">
         <img
           @load="this.handleLoad"
-          src="../assets/images/prewed-2.png"
+          src="../assets/images/prewed-2.webp"
           alt="Pre Wedding"
         />
       </div>
       <div class="two__img-container two__img-container--2">
         <img
           @load="this.handleLoad"
-          src="../assets/images/prewed-3.png"
+          src="../assets/images/prewed-3.webp"
           alt="Pre Wedding"
         />
         <p class="mt-2 text-2">
@@ -95,32 +95,32 @@
     <div class="pre-wedding__6">
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-7.png"
+        src="../assets/images/prewed-7.webp"
         alt="Pre Wedding"
       />
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-8.png"
+        src="../assets/images/prewed-8.webp"
         alt="Pre Wedding"
       />
     </div>
     <div class="pre-wedding__7">
-      <img src="../assets/images/prewed-9.png" alt="Pre Wedding" />
+      <img src="../assets/images/prewed-9.webp" alt="Pre Wedding" />
     </div>
     <div class="pre-wedding__8">
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-10.png"
+        src="../assets/images/prewed-10.webp"
         alt="Pre Wedding"
       />
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-11.png"
+        src="../assets/images/prewed-11.webp"
         alt="Pre Wedding"
       />
       <img
         @load="this.handleLoad"
-        src="../assets/images/prewed-12.png"
+        src="../assets/images/prewed-12.webp"
         alt="Pre Wedding"
       />
     </div>
@@ -148,6 +148,7 @@
 <script>
 import Loading from '../components/Loading.vue';
 import Navigation from '../components/Navigation.vue';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 
 export default {
   components: { Navigation, Loading },
@@ -184,7 +185,8 @@ export default {
         this.isScroll = false;
       }
     },
-    handleLoad() {
+    async handleLoad() {
+      await promiseTimeOut(1000);
       this.isLoading.push(true);
     }
   }

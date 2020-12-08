@@ -73,6 +73,7 @@
 import { computed, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import store from '../store';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 
 export default {
   name: 'Navigation',
@@ -96,11 +97,24 @@ export default {
 
     return { state, isPlay, handleBack };
   },
-  mounted() {
-    if (this.isPlay) {
-      setTimeout(() => {
-        this.playMusic();
-      }, 1000);
+  async mounted() {
+    const iframe = document.getElementsByTagName('iframe');
+
+    if (
+      !(
+        this.$route.path === `/${this.state.lang}/gallery` ||
+        this.$route.path === `/${this.state.lang}/gallery/pre-wedding` ||
+        this.$route.path === `/${this.state.lang}/gallery/` ||
+        this.$route.path === `/${this.state.lang}/gallery/pre-wedding/`
+      ) &&
+      iframe.length < 2
+    ) {
+      window.location.reload();
+    } else if (iframe.length < 1) {
+      window.location.reload();
+    } else {
+      await promiseTimeOut(1500);
+      this.playMusic();
     }
   },
   methods: {

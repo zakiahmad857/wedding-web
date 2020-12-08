@@ -2,7 +2,7 @@
   <div class="loading">
     <img
       class="mb-2"
-      src="../assets/images/text-gamma-alfarra-before-event.png"
+      src="../assets/images/text-gamma-alfarra-before-event.webp"
       alt="gamma-alfarra"
     />
     <loading-animation />

@@ -19,14 +19,14 @@
       @load="handleLoad"
       v-if="state.isLoading.length < 4"
       style="position: absolute"
-      src="../assets/images/bg-login-flower-top.png"
+      src="../assets/images/bg-login-flower-top.webp"
       alt=""
     />
     <img
       @load="handleLoad"
       v-if="state.isLoading.length < 4"
       style="position: absolute"
-      src="../assets/images/bg-login-flower-bottom.png"
+      src="../assets/images/bg-login-flower-bottom.webp"
       alt=""
     />
     <decoration />

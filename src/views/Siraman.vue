@@ -40,56 +40,64 @@
       </div>
     </div>
     <div ref="siramanTwo" class="siraman__2">
-      <img @load="handleLoad" class="img" src="../assets/images/prewed-5.png" />
+      <img
+        @load="handleLoad"
+        class="img"
+        src="../assets/images/prewed-5.webp"
+      />
     </div>
     <div class="siraman__3">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.webp" alt="" />
       </div>
     </div>
     <div class="siraman__4">
-      <img @load="handleLoad" src="../assets/images/prewed-6.png" class="img" />
+      <img
+        @load="handleLoad"
+        src="../assets/images/prewed-6.webp"
+        class="img"
+      />
     </div>
     <div class="siraman__5">
       <div class="container">
         <div class="img-container">
-          <img @load="handleLoad" src="../assets/images/prewed-2.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-2.webp" alt="" />
         </div>
         <div class="img-container">
-          <img @load="handleLoad" src="../assets/images/prewed-3.png" alt="" />
+          <img @load="handleLoad" src="../assets/images/prewed-3.webp" alt="" />
         </div>
       </div>
     </div>
     <div class="siraman__6">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-4.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-4.webp" alt="" />
       </div>
     </div>
     <div class="siraman__7">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-9.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-9.webp" alt="" />
       </div>
     </div>
     <div class="siraman__8">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-10.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-10.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-11.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-11.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-12.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-12.webp" alt="" />
       </div>
     </div>
     <div class="siraman__9">
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-13.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-13.webp" alt="" />
       </div>
       <div class="img-container">
-        <img @load="handleLoad" src="../assets/images/prewed-14.png" alt="" />
+        <img @load="handleLoad" src="../assets/images/prewed-14.webp" alt="" />
       </div>
     </div>
     <back-to-top @click="scrollToTop" :isScroll="state.isScroll" />
@@ -101,6 +109,7 @@ import { onMounted, reactive, ref } from 'vue';
 import Navigation from '../components/Navigation.vue';
 import BackToTop from '../components/BackToTop.vue';
 import Loading from '../components/Loading.vue';
+import { promiseTimeOut } from '../utils/promiseTimeOut';
 
 export default {
   name: 'Siraman',
@@ -124,7 +133,8 @@ export default {
       document.addEventListener('scroll', handleScroll);
     });
 
-    function handleLoad() {
+    async function handleLoad() {
+      await promiseTimeOut(1000);
       state.isPageLoading.push(true);
     }
 

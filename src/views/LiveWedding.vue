@@ -102,7 +102,7 @@
       <div class="video__container">
         <img
           @load="handleLoad"
-          src="../assets/images/wedding-gamma-alfarra.png"
+          src="../assets/images/wedding-gamma-alfarra.webp"
           alt="Wedding Gamma Alfarra"
           class="video__text"
         />
@@ -237,33 +237,40 @@ export default {
       }
     }
 
-    function handleLoad() {
+    async function handleLoad() {
+      await promiseTimeOut(1000);
       state.isLoading.push(true);
     }
 
     return { state, handleClose, isPlay, steps, handleLoad };
   },
-  mounted() {
-    const cookie = Cookies.get('isFinishedTutorial');
-    if (!cookie) {
-      this.startTour();
-    }
+  async mounted() {
+    const iframe = document.getElementsByTagName('iframe');
 
-    setTimeout(() => {
+    if (iframe.length < 1) window.location.reload();
+    else {
+      const cookie = Cookies.get('isFinishedTutorial');
+      if (!cookie) {
+        this.startTour();
+      }
+
+      const player = this.$refs.videoPlyr.player;
+      player.muted = true;
+      await promiseTimeOut(1000);
+      player.play();
+      await promiseTimeOut(200);
       this.playMusic();
-    }, 3000);
 
-    const player = this.$refs.videoPlyr.player;
-    player.muted = true;
-    player.on('play', () => {
-      this.stopMusic();
-    });
-    player.on('volumechange', () => {
-      this.stopMusic();
-    });
-    player.on('enterfullscreen', () => {
-      this.stopMusic();
-    });
+      player.on('play', () => {
+        this.stopMusic();
+      });
+      player.on('volumechange', () => {
+        this.stopMusic();
+      });
+      player.on('enterfullscreen', () => {
+        this.stopMusic();
+      });
+    }
   },
   methods: {
     startTour() {
@@ -284,7 +291,7 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/variables.scss';
 .live-wedding {
-  background: url('../assets/images/bg-live-wedding.png');
+  background: url('../assets/images/bg-live-wedding.webp');
   background-size: cover;
   background-position: center;
   height: 100vh;

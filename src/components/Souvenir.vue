@@ -15,7 +15,7 @@
       </p>
       <img
         class="souvenir__img"
-        src="../assets/images/img-souvenir.png"
+        src="../assets/images/img-souvenir.webp"
         alt="Souvenir"
       />
       <p class="text-2">
