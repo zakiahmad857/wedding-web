@@ -5,14 +5,14 @@
       @load="handleLoad"
       v-if="state.isLoading.length < 4"
       style="position: absolute"
-      src="../assets/images/image-welcome.svg"
+      src="../assets/images/image-welcome.webp"
       alt=""
     />
     <img
       @load="handleLoad"
       v-if="state.isLoading.length < 4"
       style="position: absolute"
-      src="../assets/images/image-couple.svg"
+      src="../assets/images/image-couple.webp"
       alt=""
     />
     <img

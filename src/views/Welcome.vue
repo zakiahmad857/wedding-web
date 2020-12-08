@@ -23,7 +23,7 @@
       <div class="bg"></div>
       <div class="bg-1"></div>
       <img
-        src="../assets/images/image-welcome.svg"
+        src="../assets/images/image-welcome.webp"
         alt="welcome"
         class="welcome-img"
         :class="{

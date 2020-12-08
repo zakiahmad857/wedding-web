@@ -69,7 +69,7 @@
           @load="handleLoad"
           id="step-2"
           class="nav-item"
-          src="../assets/images/nav-gallery.svg"
+          src="../assets/images/nav-gallery.webp"
           alt="gallery"
         />
       </router-link>
@@ -78,7 +78,7 @@
         id="step-3"
         @click="handleClose('souvenir')"
         class="nav-item nav-item--souvenir"
-        src="../assets/images/nav-souvenir.svg"
+        src="../assets/images/nav-souvenir.webp"
         alt="souvenir"
       />
       <div style="position: relative">
@@ -87,13 +87,13 @@
           @click="handleClose('amplop')"
           id="step-4"
           class="nav-item"
-          src="../assets/images/nav-amplop.svg"
+          src="../assets/images/nav-amplop.webp"
           alt="amplop"
         />
         <img
           @load="handleLoad"
           class="img-pot"
-          src="../assets/images/image-pot.svg"
+          src="../assets/images/image-pot.webp"
           alt="amplop"
         />
       </div>

@@ -47,7 +47,7 @@
         <img
           @load="this.handleLoad"
           class="underline"
-          src="../assets/images/prewed-underline.svg"
+          src="../assets/images/prewed-underline.webp"
           alt="underline"
         />
       </div>
@@ -61,7 +61,7 @@
         <img
           @load="this.handleLoad"
           class="underline"
-          src="../assets/images/prewed-underline.svg"
+          src="../assets/images/prewed-underline.webp"
           alt="underline"
         />
       </div>

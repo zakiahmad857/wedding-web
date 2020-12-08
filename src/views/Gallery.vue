@@ -10,7 +10,7 @@
           <div class="gallery-item">
             <img
               @load="handleLoad"
-              src="../assets/images/artwork-canvas.svg"
+              src="../assets/images/artwork-canvas.webp"
               alt="siraman"
             />
             <h2 class="heading-1">Siraman</h2>
@@ -20,7 +20,7 @@
           <div class="gallery-item gallery-item--lg">
             <img
               @load="handleLoad"
-              src="../assets/images/artwork-canvas.svg"
+              src="../assets/images/artwork-canvas.webp"
               alt="pre-wedding"
             />
             <h2 class="heading-1">Pre-Wedding</h2>
@@ -30,7 +30,7 @@
           <div class="gallery-item">
             <img
               @load="handleLoad"
-              src="../assets/images/artwork-canvas.svg"
+              src="../assets/images/artwork-canvas.webp"
               alt="pengajian"
             />
             <h2 class="heading-1">Pengajian</h2>

@@ -6,12 +6,12 @@
     </h1>
     <img
       class="couple mb-3"
-      src="../assets/images/image-couple.svg"
+      src="../assets/images/image-couple.webp"
       alt="gamma alfarra"
     />
     <img
       class="gamma-alfarra mb-3"
-      src="../assets/images/text-gamma-alfarra.svg"
+      src="../assets/images/text-gamma-alfarra.webp"
       alt="gamma alfarra"
     />
     <Button @click="handleClick" style="width: 20rem" color="grey">{{
