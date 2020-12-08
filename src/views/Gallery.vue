@@ -2,7 +2,7 @@
   <loading v-if="state.isLoading < 3" />
   <div class="gallery">
     <decoration />
-    <navigation :disableBack="true" />
+    <navigation ref="navRef" :disableBack="true" />
     <div class="gallery__container">
       <h1 class="heading-0 mb-2">GALLERY</h1>
       <div class="galleries">
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import Decoration from '../components/Decoration.vue';
 import { useRoute } from 'vue-router';
 import Navigation from '../components/Navigation.vue';
@@ -58,8 +58,15 @@ export default {
   },
   setup() {
     const state = reactive({ lang: '', isLoading: [] });
-
+    const navRef = ref(null);
     const route = useRoute();
+
+    watch(state.isLoading, async (isLoading, _prevLoading) => {
+      if (isLoading.length >= 3) {
+        // await promiseTimeOut(1000);
+        // navRef.value.playMusic();
+      }
+    });
 
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
@@ -68,7 +75,7 @@ export default {
       state.isLoading.push(true);
     }
 
-    return { state, handleLoad };
+    return { state, handleLoad, navRef };
   }
 };
 </script>

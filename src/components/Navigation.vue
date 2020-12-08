@@ -45,12 +45,16 @@
         @click.prevent="this.playMusic"
       />
       <img
-        v-else-if="isPlay"
+        v-else-if="isPlay && this.variant !== 'transparent'"
         src="../assets/icons/icon-sound-off.svg"
         alt="home"
         @click.prevent="this.stopMusic"
       />
-      <img v-else src="../assets/icons/icon-sound-on.svg" alt="sound-on" />
+      <img
+        v-else
+        src="../assets/icons/icon-sound-off-grey.svg"
+        alt="sound-on"
+      />
       <div style="display: none">
         <vue-plyr ref="plyr">
           <div class="plyr__video-embed">
@@ -92,7 +96,7 @@ export default {
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
 
     function handleBack() {
-      router.back();
+      router.push(`/${state.lang}/gallery`);
     }
 
     return { state, isPlay, handleBack };
