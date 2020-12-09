@@ -5,12 +5,13 @@
       :placeholder="state.multiLang[lang].textAreaPlaceHolder"
       class="lined-textarea text-1"
       name=""
-      id=""
+      id="idpesan"
     ></textarea>
     <p>With Love</p>
     <Input
       class="mb-4 input-custom"
       :placeholder="state.multiLang[lang].placeholder"
+      id="idnama"
     />
     <Button @click="handleClick" class="btn--grey btn-custom">{{
       state.multiLang[lang].button
@@ -39,12 +40,26 @@ export default {
     });
 
     function handleClick(e) {
+      runapi();
       ctx.emit('send', e);
     }
 
     return { handleClick, state };
   }
 };
+
+function runapi() {
+  var theURL =
+    'https://script.google.com/macros/s/AKfycbyvizGr77lzhWwPfgqOKK-KHwPxKbpx_5eQzfVJLA7dDq8ddtc/exec?sheet=pesan&nama=' +
+    document.getElementById('idnama').value +
+    '&pesan=' +
+    document.getElementById('idpesan').value;
+  console.log(theURL);
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open('GET', theURL, false); // false for synchronous request
+  xmlHttp.send(null);
+  return xmlHttp.responseText;
+}
 </script>
 
 <style lang="scss" scoped>
