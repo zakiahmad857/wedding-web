@@ -9,7 +9,14 @@
   &__6,
   &__7,
   &__8,
-  &__9 {
+  &__9,
+  &__10,
+  &__11,
+  &__12,
+  &__13,
+  &__14,
+  &__15,
+  &__16 {
     height: 100vh;
     position: relative;
     scroll-snap-align: center;
@@ -60,18 +67,29 @@
   }
 
   &__2 {
-    & > img {
+    @media only screen and (orientation: portrait) {
+      grid-template-columns: none;
+      align-items: flex-start;
+    }
+
+    .img-container {
       justify-self: flex-end;
       height: 75%;
+      display: flex;
+      justify-content: flex-end;
 
-      @media only screen and (max-width: 64em) and (orientation: portrait) {
-        width: 42vw;
-        height: auto;
+      @media only screen and (orientation: portrait) {
+        justify-self: center;
+        justify-content: center;
+        align-self: flex-end;
+        height: 80%;
       }
 
-      @media only screen and (max-width: 28.175em) {
-        height: auto;
-        width: 50vw;
+      & > img {
+        max-height: 100%;
+        width: 80%;
+        object-fit: cover;
+        object-position: center;
       }
     }
 
@@ -79,6 +97,12 @@
       font-size: 1.6rem;
       width: 50%;
       color: $color-brown;
+
+      @media only screen and (orientation: portrait) {
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+      }
 
       @media only screen and (max-width: 28.175em) {
         width: 100%;
@@ -92,6 +116,12 @@
       left: -3rem;
       margin-top: 1rem;
 
+      @media only screen and (orientation: portrait) {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
       @media only screen and (max-width: 50em) {
         width: 50%;
       }
@@ -103,34 +133,36 @@
   }
 
   &__3 {
-    position: relative;
-
-    @media only screen and (max-width: 28.175em) {
-      justify-content: flex-end;
-      display: flex;
+    @media only screen and (orientation: portrait) {
+      grid-template-columns: 1fr;
     }
 
-    & > img {
-      height: 75%;
+    .img-container {
+      width: 50%;
 
-      @media only screen and (max-width: 64em) and (orientation: portrait) {
-        width: 42vw;
-        height: auto;
+      @media only screen and (orientation: portrait) {
+        grid-row: 1 / 2;
+        justify-self: center;
+        align-self: flex-end;
       }
 
-      @media only screen and (max-width: 28.175em) {
-        height: unset;
-        width: 50vw;
+      @media only screen and (orientation: portrait) and (max-width: 37.5em) {
+        width: 70%;
       }
-    }
 
-    .description {
-      position: relative;
+      .aspect-ratio {
+        position: relative;
+        padding-top: 150%;
 
-      @media only screen and (max-width: 28.175em) {
-        position: absolute;
-        left: 0;
-        top: 50%;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
       }
     }
 
@@ -139,21 +171,34 @@
       width: 50%;
       color: $color-brown;
       margin-left: auto;
+      text-align: right;
 
-      @media only screen and (max-width: 28.175em) {
+      @media only screen and (orientation: portrait) {
+        text-align: center;
         width: 80%;
-        margin-left: 2rem;
+        margin: 0 auto;
+      }
+    }
+
+    .description {
+      position: relative;
+
+      @media only screen and (orientation: portrait) {
+        align-self: flex-start;
       }
     }
 
     .underline {
       position: absolute;
-      right: -1rem;
-      margin-top: 1rem;
+      right: -3rem;
+      bottom: -3rem;
 
-      @media only screen and (max-width: 28.175em) {
-        right: 5rem;
-        width: 80%;
+      @media only screen and (orientation: portrait) {
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        bottom: -5rem;
       }
     }
   }
@@ -182,10 +227,88 @@
   &__5 {
     display: grid;
     grid-template-columns: 3fr 4fr;
-    gap: 4rem;
+    gap: 2rem;
 
-    @media only screen and (max-width: 28.175em) {
-      height: 50vh;
+    @media only screen and (orientation: portrait) {
+      align-items: center;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr auto 1fr;
+    }
+
+    .img-container {
+      position: relative;
+      top: 10%;
+
+      @media only screen and (orientation: portrait) {
+        top: 0;
+      }
+
+      &:first-child {
+        width: 61%;
+        justify-self: flex-end;
+
+        @media only screen and (orientation: portrait) {
+          width: 75%;
+        }
+
+        .aspect-ratio {
+          padding-top: 150%;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 80%;
+
+        @media only screen and (orientation: portrait) {
+          width: 85%;
+        }
+        .aspect-ratio {
+          padding-top: 67%;
+        }
+      }
+
+      .aspect-ratio {
+        position: relative;
+        img {
+          height: 100%;
+          width: 100%;
+          object-position: center;
+          object-fit: cover;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    .text-2 {
+      color: $color-brown;
+      font-size: 1.4rem;
+      line-height: 1.2;
+
+      &--portrait-1,
+      &--portrait-2 {
+        display: none;
+        grid-column: 1 / -1;
+        width: 80%;
+        margin: 0 auto;
+        @media only screen and (orientation: portrait) {
+          display: block !important;
+        }
+      }
+
+      &--portrait-1 {
+        grid-row: 1 / 2;
+        align-self: flex-end;
+      }
+
+      &--portrait-2 {
+        align-self: flex-start;
+      }
+
+      @media only screen and (orientation: portrait) {
+        display: none;
+      }
     }
   }
 
@@ -248,56 +371,138 @@
   &__8 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     justify-items: center;
-    padding: 5% 0;
+    align-items: center;
 
-    @media only screen and (max-width: 28.175em) {
-      height: 50vh;
-      margin-bottom: 50vh;
+    @media only screen and (orientation: portrait) {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    img {
-      height: 80%;
+    .img-container {
+      width: 100%;
+      position: relative;
 
-      @media only screen and (max-width: 64em) {
-        height: unset;
-        width: calc(100vw / 3 - 15px);
+      @media only screen and (orientation: portrait) {
+        &:nth-child(2) {
+          width: 40%;
+
+          .text-2 {
+            position: relative;
+            width: 150%;
+            text-align: center;
+            left: -100%;
+            transform: translateX(50%);
+            margin: 2rem 0;
+            display: block !important;
+          }
+        }
+
+        &:first-child,
+        &:last-child {
+          width: 60%;
+
+          img {
+            top: 50% !important;
+          }
+
+          .text-2 {
+            display: none;
+          }
+        }
+
+        &:first-child {
+          justify-self: flex-end;
+          align-self: flex-start;
+        }
+
+        &:last-child {
+          justify-self: flex-start;
+          align-self: flex-start;
+        }
+
+        img {
+          width: 100%;
+        }
       }
 
-      @media only screen and (max-width: 28.175em) {
-        height: unset;
-        width: calc(100vw / 3 - 15px);
+      .aspect-ratio {
+        padding-top: 150%;
+        position: relative;
+      }
+
+      .text-2 {
+        color: $color-brown;
+        font-size: 1.6rem;
+        line-height: 1.2;
+        position: absolute;
+        top: 0;
+        left: 15%;
+        width: 70%;
       }
 
       &:first-child {
-        justify-self: flex-end;
+        img {
+          top: 60%;
+        }
+
+        .text-2 {
+          top: 10%;
+        }
       }
 
       &:nth-child(2) {
-        align-self: center;
+        .text-2 {
+          display: none;
+        }
+        @media only screen and (orientation: portrait) {
+          grid-column: 1 / -1;
+          grid-row: 1 / 2;
+        }
       }
 
       &:last-child {
-        align-self: flex-end;
-        justify-self: flex-start;
+        img {
+          top: 40%;
+        }
+
+        .text-2 {
+          bottom: 10%;
+          top: unset;
+        }
       }
+    }
+
+    img {
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      max-height: 100%;
+      width: 70%;
+      object-position: center;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
     }
   }
 
   &__9 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    height: 140vh;
+    scroll-snap-align: start;
 
     @media only screen and (max-width: 64em) and (orientation: portrait) {
+      height: 100vh;
       align-items: center;
     }
 
     @media only screen and (max-width: 28.175em) {
+      height: 100vh;
       align-items: center;
     }
 
     .img {
-      height: 140%;
+      height: 100%;
       width: 100%;
       background-size: cover;
       background-position: center -60px;
@@ -319,6 +524,101 @@
       &:last-child {
         background-image: url('../assets/images/prewed-14.webp');
       }
+    }
+  }
+
+  &__10 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 4rem;
+
+    @media only screen and (max-width: 28.175em) {
+      padding: 0 2rem;
+    }
+
+    .img-container {
+      width: calc(100vw / 3 - 3rem);
+
+      img {
+        max-height: 80vh;
+        max-width: 90%;
+      }
+    }
+  }
+
+  &__11,
+  &__13,
+  &__16 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: center left;
+      object-fit: cover;
+
+      @media only screen and (orientation: portrait) {
+        height: 50%;
+      }
+    }
+  }
+
+  &__12,
+  &__14 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 30%;
+      height: 80%;
+      object-position: top center;
+      object-fit: cover;
+
+      @media only screen and (orientation: portrait) {
+        width: 70%;
+        max-height: 65%;
+      }
+    }
+  }
+
+  &__13 {
+    img {
+      object-position: top center;
+    }
+  }
+
+  &__15 {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+
+    .img-container {
+      max-height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        max-height: 90%;
+        width: 40%;
+        object-position: center;
+        object-fit: cover;
+
+        @media only screen and (orientation: portrait) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__16 {
+    img {
+      object-position: center;
     }
   }
 }
@@ -439,72 +739,6 @@
 
     img {
       margin-top: 1.6rem;
-    }
-  }
-}
-
-.two {
-  &__img-container {
-    position: relative;
-    top: 20%;
-    height: 60%;
-
-    @media only screen and (max-width: 50em) {
-      height: 45%;
-    }
-
-    @media only screen and (max-width: 28.175em) {
-      height: 30%;
-      top: 0;
-    }
-
-    @media only screen and (max-width: 20em) {
-      height: 25%;
-    }
-
-    &--1 {
-      justify-self: flex-end;
-    }
-
-    &--2 {
-      height: 50%;
-
-      @media only screen and (max-width: 50em) {
-        height: 35%;
-      }
-
-      @media only screen and (max-width: 28.175em) {
-        height: 20%;
-      }
-
-      @media only screen and (max-width: 20em) {
-        height: 18%;
-      }
-
-      img {
-        display: inline-block;
-        padding-bottom: 1.5rem;
-        border-bottom: 1px solid $color-brown;
-      }
-    }
-
-    img {
-      height: 100%;
-
-      @media only screen and (min-width: 28.175em) and (max-width: 64em) and (orientation: portrait) {
-        height: 50%;
-      }
-    }
-
-    .text-2 {
-      width: 66.7%;
-      font-size: 1.4rem;
-      line-height: 1.2;
-      color: $color-brown;
-
-      @media only screen and (max-width: 20em) {
-        margin-top: 1rem;
-      }
     }
   }
 }

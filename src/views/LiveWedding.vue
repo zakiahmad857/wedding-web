@@ -37,14 +37,14 @@
           @load="handleLoad"
           v-if="!isPlay"
           @click="this.playMusic"
-          src="../assets/icons/icon-sound-on.svg"
+          src="../assets/icons/icon-sound-on.webp"
           alt="sound-on"
         />
         <img
           @load="handleLoad"
           v-else
           @click="this.stopMusic"
-          src="../assets/icons/icon-sound-off.svg"
+          src="../assets/icons/icon-sound-off.webp"
           alt="sound-off"
         />
         <div style="display: none">
@@ -256,7 +256,7 @@ export default {
 
       const player = this.$refs.videoPlyr.player;
       player.muted = true;
-      await promiseTimeOut(1000);
+      await promiseTimeOut(1500);
       player.play();
       await promiseTimeOut(500);
       this.playMusic();

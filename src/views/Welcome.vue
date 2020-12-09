@@ -8,7 +8,7 @@
     />
     <img
       @load="handleLoad"
-      src="../assets/icons/icon-sound-off.svg"
+      src="../assets/icons/icon-sound-off.webp"
       alt="sound-off"
     />
   </div>

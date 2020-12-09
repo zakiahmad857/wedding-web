@@ -34,26 +34,27 @@
     >
       <img
         v-if="this.variant === 'transparent' && !isPlay"
-        src="../assets/icons/icon-sound-on-grey.svg"
+        src="../assets/icons/icon-sound-on-grey.webp"
         alt="home"
         @click.prevent="this.playMusic"
       />
       <img
         v-else-if="!isPlay"
-        src="../assets/icons/icon-sound-on.svg"
+        src="../assets/icons/icon-sound-on.webp"
         alt="home"
         @click.prevent="this.playMusic"
       />
       <img
         v-else-if="isPlay && this.variant !== 'transparent'"
-        src="../assets/icons/icon-sound-off.svg"
+        src="../assets/icons/icon-sound-off.webp"
         alt="home"
         @click.prevent="this.stopMusic"
       />
       <img
         v-else
-        src="../assets/icons/icon-sound-off-grey.svg"
+        src="../assets/icons/icon-sound-off-grey.webp"
         alt="sound-on"
+        @click.prevent="this.stopMusic"
       />
       <div style="display: none">
         <vue-plyr ref="plyr">
@@ -108,8 +109,10 @@ export default {
       !(
         this.$route.path === `/${this.state.lang}/gallery` ||
         this.$route.path === `/${this.state.lang}/gallery/pre-wedding` ||
+        this.$route.path === `/${this.state.lang}/gallery/pengajian` ||
         this.$route.path === `/${this.state.lang}/gallery/` ||
-        this.$route.path === `/${this.state.lang}/gallery/pre-wedding/`
+        this.$route.path === `/${this.state.lang}/gallery/pre-wedding/` ||
+        this.$route.path === `/${this.state.lang}/gallery/pengajian/`
       ) &&
       iframe.length < 2
     ) {

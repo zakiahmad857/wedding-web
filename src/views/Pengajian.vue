@@ -10,22 +10,8 @@
         blablablablaPengajian merupakan blablablablaPengajian merupakan
         blablablabla
       </p>
-      <div class="video">
-        <vue-plyr
-          :options="{ settings: ['captions', 'quality', 'speed', 'loop'] }"
-          ref="plyr"
-        >
-          <div class="plyr__video-embed">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/gIB2egm7tL8"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </vue-plyr>
+      <div class="img-container">
+        <img src="../assets/images/prewed-9.webp" alt="Pre Wedding" />
         <div class="creator">
           Videographer by Ivan Dimas Saputra <br />
           Editor by Gamma Winarno

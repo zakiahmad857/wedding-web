@@ -1,5 +1,5 @@
 <template>
-  <loading v-if="this.isLoading.length < 13" />
+  <loading v-if="this.isLoading.length < 23" />
   <div class="pre-wedding">
     <navigation variant="transparent" />
     <div class="pre-wedding__1">
@@ -18,8 +18,9 @@
           alt="Pre Wedding"
         />
         <div class="one__description">
-          This is a description or a story of the photoshoot theme <br />
-          This is a description or a story of the photoshoot theme
+          “Knowing that love is to share, Each one believing that love never
+          dies. Watching their eyes, And hoping I'm always there, I will be
+          there, and everywhere, Here, there and everywhere.”
         </div>
       </div>
       <div @click="this.scrollToTwo" class="one__arrow-down">
@@ -31,11 +32,13 @@
       </div>
     </div>
     <div ref="preWed2" class="pre-wedding__2">
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-4.webp"
-        alt="Pre Wedding"
-      />
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-4.webp"
+          alt="Pre Wedding"
+        />
+      </div>
       <div class="description">
         <p class="text-2">
           Both of us have a deep, rooted, Javanese background, with Alfarra
@@ -59,37 +62,58 @@
           series. It creeps everyone out. Especially Gamma.
         </p>
         <img
-          @load="this.handleLoad"
           class="underline"
           src="../assets/images/prewed-underline.webp"
           alt="underline"
         />
       </div>
-      <img src="../assets/images/prewed-5.webp" alt="Pre Wedding" />
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-5.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+      </div>
     </div>
     <div class="pre-wedding__4">
       <div class="img"></div>
     </div>
     <div class="pre-wedding__5">
-      <div class="two__img-container two__img-container--1">
-        <img
-          @load="this.handleLoad"
-          src="../assets/images/prewed-2.webp"
-          alt="Pre Wedding"
-        />
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-2.webp"
+            alt="Pre Wedding"
+          />
+        </div>
       </div>
-      <div class="two__img-container two__img-container--2">
-        <img
-          @load="this.handleLoad"
-          src="../assets/images/prewed-3.webp"
-          alt="Pre Wedding"
-        />
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-3.webp"
+            alt="Pre Wedding"
+          />
+        </div>
         <p class="mt-2 text-2">
-          We bonded over a sport of Tennis, where we play twice a week together
-          for months. Gamma is getting really good, he hasn’t found the right
-          racket and shoes yet. Alfarra however, needs to work on running, she’s
-          definitely the lazy one.
+          We both really loved this shoot, it was super fun and very us. We even
+          used Gamma’s dad’s vintage rackets. <br />
+          Another fun fact: on the way to the court, Alfarra spilled coffee all
+          over her white dress. She’s not at all clumsy. But she did clean it up
+          really well and made it work!
         </p>
+      </div>
+      <div class="text-2 text-2--portrait-1">
+        We both really loved this shoot, it was super fun and very us. We even
+        used Gamma’s dad’s vintage rackets.
+      </div>
+      <div class="text-2 text-2--portrait-2">
+        Another fun fact: on the way to the court, Alfarra spilled coffee all
+        over her white dress. She’s not at all clumsy. But she did clean it up
+        really well and made it work!
       </div>
     </div>
     <div class="pre-wedding__6">
@@ -108,25 +132,127 @@
       <img src="../assets/images/prewed-9.webp" alt="Pre Wedding" />
     </div>
     <div class="pre-wedding__8">
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-10.webp"
-        alt="Pre Wedding"
-      />
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-11.webp"
-        alt="Pre Wedding"
-      />
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-12.webp"
-        alt="Pre Wedding"
-      />
+      <div class="img-container">
+        <p class="text-2">
+          Months before the wedding Gamma decided to pick this moment to propose
+          to Alfarra.
+        </p>
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-10.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+      </div>
+      <div class="img-container">
+        <p class="text-2">
+          Months before the wedding Gamma decided to pick this moment to propose
+          to Alfarra.
+        </p>
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-11.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+        <p class="text-2">
+          We all know Alfarra would say yes anyway, but every girl deserves a
+          proposal yes?
+        </p>
+      </div>
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-12.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+        <p class="text-2">
+          We all know Alfarra would say yes anyway, but every girl deserves a
+          proposal yes?
+        </p>
+      </div>
     </div>
     <div class="pre-wedding__9">
       <div class="img"></div>
       <div class="img"></div>
+    </div>
+    <div class="pre-wedding__10">
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-15.webp"
+          alt="Pre Wedding"
+        />
+      </div>
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-16.webp"
+          alt="Pre Wedding"
+        />
+      </div>
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-17.webp"
+          alt="Pre Wedding"
+        />
+      </div>
+    </div>
+    <div class="pre-wedding__11">
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-18.webp"
+        alt="Pre Wedding"
+      />
+    </div>
+    <div class="pre-wedding__12">
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-19.webp"
+        alt="Pre Wedding"
+      />
+    </div>
+    <div class="pre-wedding__13">
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-20.webp"
+        alt="Pre Wedding"
+      />
+    </div>
+    <div class="pre-wedding__14">
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-21.webp"
+        alt="Pre Wedding"
+      />
+    </div>
+    <div class="pre-wedding__15">
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-22.webp"
+          alt="Pre Wedding"
+        />
+      </div>
+      <div class="img-container">
+        <img
+          @load="this.handleLoad"
+          src="../assets/images/prewed-23.webp"
+          alt="Pre Wedding"
+        />
+      </div>
+    </div>
+    <div class="pre-wedding__16">
+      <img
+        @load="this.handleLoad"
+        src="../assets/images/prewed-24.webp"
+        alt="Pre Wedding"
+      />
     </div>
     <div
       :class="{ showed: isScroll }"

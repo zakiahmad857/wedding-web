@@ -8,32 +8,32 @@
       <div class="galleries">
         <router-link :to="`/${state.lang}/gallery/siraman`">
           <div class="gallery-item">
+            <h2 class="heading-1">Siraman</h2>
             <img
               @load="handleLoad"
               src="../assets/images/artwork-canvas.webp"
               alt="siraman"
             />
-            <h2 class="heading-1">Siraman</h2>
           </div>
         </router-link>
         <router-link :to="`/${state.lang}/gallery/pre-wedding`">
           <div class="gallery-item gallery-item--lg">
+            <h2 class="heading-1">Pre-Wedding</h2>
             <img
               @load="handleLoad"
               src="../assets/images/artwork-canvas.webp"
               alt="pre-wedding"
             />
-            <h2 class="heading-1">Pre-Wedding</h2>
           </div>
         </router-link>
         <router-link :to="`/${state.lang}/gallery/pengajian`">
           <div class="gallery-item">
+            <h2 class="heading-1">Pengajian</h2>
             <img
               @load="handleLoad"
               src="../assets/images/artwork-canvas.webp"
               alt="pengajian"
             />
-            <h2 class="heading-1">Pengajian</h2>
           </div>
         </router-link>
       </div>
@@ -93,6 +93,10 @@ export default {
     align-items: center;
     position: relative;
     z-index: 999;
+
+    @media only screen and (orientation: portrait) {
+      padding-top: 20vh;
+    }
   }
 }
 
@@ -100,35 +104,65 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
+  width: 80%;
+  text-align: center;
+
+  @media only screen and (orientation: portrait) {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+
+    & > a {
+      &:nth-child(2) {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+      }
+    }
+  }
 }
 
 .gallery-item {
   cursor: pointer;
   position: relative;
-  transform: scale(1);
-  transition: all 0.3s;
 
   &:hover {
-    transform: scale(1.05);
+    img {
+      transform: scale(1.05);
+    }
   }
 
   &:active {
-    transform: scale(0.95);
+    img {
+      transform: scale(0.95);
+    }
   }
 
   img {
     height: 20rem;
+    transition: all 0.3s;
+    transform: scale(1);
+
+    @media only screen and (max-width: 28.175em) {
+      height: 15rem;
+    }
   }
 
   &--lg {
-    transform: scale(1.2);
+    img {
+      transform: scale(1.2);
+    }
 
     &:hover {
-      transform: scale(1.25);
+      img {
+        transform: scale(1.25);
+      }
     }
 
     &:active {
-      transform: scale(1.15);
+      img {
+        transform: scale(1.15);
+      }
     }
   }
 }
@@ -147,5 +181,10 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
+  z-index: 10;
+
+  @media only screen and (max-width: 28.175em) {
+    font-size: 1.4rem;
+  }
 }
 </style>

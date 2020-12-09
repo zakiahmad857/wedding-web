@@ -102,4 +102,10 @@ const router = createRouter({
 //   }
 // });
 
+router.beforeEach((to, from, next) => {
+  if (!to.fullPath.includes('id') && !to.fullPath.includes('en')) {
+    next({ path: '/id' + to.fullPath });
+  } else next();
+});
+
 export default router;
