@@ -6,16 +6,21 @@
       class="lined-textarea text-1"
       name=""
       id="idpesan"
+      v-model="state.message"
     ></textarea>
     <p>With Love</p>
     <Input
       class="mb-4 input-custom"
       :placeholder="state.multiLang[lang].placeholder"
       id="idnama"
+      v-model="state.name"
     />
-    <Button @click="handleClick" class="btn--grey btn-custom">{{
-      state.multiLang[lang].button
-    }}</Button>
+    <Button
+      @click="handleClick"
+      :isLoading="isLoading"
+      class="btn--grey btn-custom"
+      >{{ state.multiLang[lang].button }}</Button
+    >
   </div>
 </template>
 
@@ -32,34 +37,23 @@ export default {
     Button
   },
   props: {
-    lang: String
+    lang: String,
+    isLoading: Boolean
   },
   setup(_props, ctx) {
     const state = reactive({
-      multiLang: WelcomeMultiLang
+      multiLang: WelcomeMultiLang,
+      name: '',
+      message: ''
     });
 
-    function handleClick(e) {
-      runapi();
-      ctx.emit('send', e);
+    function handleClick() {
+      ctx.emit('send', state.name, state.message);
     }
 
     return { handleClick, state };
   }
 };
-
-function runapi() {
-  var theURL =
-    'https://script.google.com/macros/s/AKfycbyvizGr77lzhWwPfgqOKK-KHwPxKbpx_5eQzfVJLA7dDq8ddtc/exec?sheet=pesan&nama=' +
-    document.getElementById('idnama').value +
-    '&pesan=' +
-    document.getElementById('idpesan').value;
-  console.log(theURL);
-  var xmlHttp = new XMLHttpRequest();
-  xmlHttp.open('GET', theURL, false); // false for synchronous request
-  xmlHttp.send(null);
-  return xmlHttp.responseText;
-}
 </script>
 
 <style lang="scss" scoped>
@@ -80,6 +74,10 @@ function runapi() {
 
   @media only screen and (max-width: 90em) and (orientation: landscape) {
     padding: 2rem 4rem;
+  }
+
+  @media only screen and (orientation: portrait) {
+    overflow: auto;
   }
 
   @media only screen and (max-width: 28.125em) {
@@ -146,6 +144,10 @@ function runapi() {
     line-height: 30px;
     background-size: 100% 30px;
     font-size: 1.6rem;
+  }
+
+  @media only screen and (orientation: portrait) {
+    min-height: 205px;
   }
 }
 

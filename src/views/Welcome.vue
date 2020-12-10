@@ -39,6 +39,7 @@
       <GreetingCard
         :lang="state.lang"
         @send="handleSend"
+        :isLoading="isFetching"
         :class="{
           showing: state.currentStep === 'step-2-showing',
           showed: state.currentStep === 'step-2',
@@ -64,7 +65,7 @@
 </template>
 
 <script>
-import { reactive, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { promiseTimeOut } from '../utils/promiseTimeOut';
 import GreetingCard from '../components/GreetingCard.vue';
@@ -84,7 +85,11 @@ export default {
     const route = useRoute();
     const router = useRouter();
 
+    const fetch = ref(false);
+
     route.path.startsWith('/id') ? (state.lang = 'id') : (state.lang = 'en');
+
+    const isFetching = computed(() => fetch.value);
 
     watch(state.isLoading, async (isLoading, _prevLoading) => {
       if (isLoading.length >= 2) {
@@ -97,7 +102,11 @@ export default {
       }
     });
 
-    async function handleSend(_e) {
+    async function handleSend(name, message) {
+      fetch.value = true;
+      await runapi(name, message);
+      fetch.value = false;
+
       state.currentStep = 'step-2-collapsing';
       await promiseTimeOut(1000);
       state.currentStep = 'step-3-showing';
@@ -118,7 +127,36 @@ export default {
       state.isLoading.push(true);
     }
 
-    return { state, handleSend, handleDone, handleLoad };
+    function runapi(name, message) {
+      var theURL =
+        'https://script.google.com/macros/s/AKfycbyvizGr77lzhWwPfgqOKK-KHwPxKbpx_5eQzfVJLA7dDq8ddtc/exec?sheet=pesan&nama=' +
+        name +
+        '&pesan=' +
+        message;
+      return new Promise(function(resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', theURL);
+        xhr.onload = function() {
+          if (this.status >= 200 && this.status < 300) {
+            resolve(xhr.response);
+          } else {
+            reject({
+              status: this.status,
+              statusText: xhr.statusText
+            });
+          }
+        };
+        xhr.onerror = function() {
+          reject({
+            status: this.status,
+            statusText: xhr.statusText
+          });
+        };
+        xhr.send();
+      });
+    }
+
+    return { state, handleSend, handleDone, handleLoad, isFetching };
   }
 };
 </script>
@@ -127,7 +165,7 @@ export default {
 @import '../scss/variables.scss';
 
 .welcome {
-  height: 100vh;
+  min-height: 100vh;
   background: $color-green-c;
 }
 

@@ -117,16 +117,27 @@
       </div>
     </div>
     <div class="pre-wedding__6">
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-7.webp"
-        alt="Pre Wedding"
-      />
-      <img
-        @load="this.handleLoad"
-        src="../assets/images/prewed-8.webp"
-        alt="Pre Wedding"
-      />
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-7.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+      </div>
+      <div class="img-container">
+        <div class="aspect-ratio">
+          <img
+            @load="this.handleLoad"
+            src="../assets/images/prewed-8.webp"
+            alt="Pre Wedding"
+          />
+        </div>
+        <p class="text-2 mt-2">
+          In a parallel universe, this would be how we would’ve met.
+        </p>
+      </div>
     </div>
     <div class="pre-wedding__7">
       <img src="../assets/images/prewed-9.webp" alt="Pre Wedding" />

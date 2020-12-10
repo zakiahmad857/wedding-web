@@ -146,6 +146,12 @@ export default {
 .login {
   height: 100vh;
   background-color: $color-green-c;
+  position: relative;
+
+  @media only screen and (orientation: portrait) {
+    min-height: 568px;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;

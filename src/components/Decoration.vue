@@ -39,7 +39,7 @@ export default {
 
 .bg-top,
 .bg-bottom {
-  position: fixed;
+  position: absolute;
   left: 0;
   width: 100%;
   background-size: cover;

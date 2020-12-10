@@ -1,6 +1,7 @@
 <template>
   <input
     class="input"
+    autocomplete="off"
     @input="handleChange"
     type="text"
     :name="name"

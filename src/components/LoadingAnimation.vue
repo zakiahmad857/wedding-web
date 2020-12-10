@@ -1,24 +1,48 @@
 <template>
-  <div class="lds-ring">
+  <span :class="[this.class]" class="lds-ring">
     <div></div>
     <div></div>
     <div></div>
     <div></div>
-  </div>
+  </span>
 </template>
 
 <script>
 export default {
-  name: 'LoadingAnimation'
+  name: 'LoadingAnimation',
+  props: {
+    class: String
+  }
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../scss/variables.scss';
+
 .lds-ring {
   display: inline-block;
   position: relative;
   width: 40px;
   height: 40px;
+
+  &.sm {
+    width: 25px;
+    height: 25px;
+
+    div {
+      height: 20px;
+      width: 20px;
+      border: 3px solid #fafafa;
+      border-color: #fafafa transparent transparent transparent;
+    }
+  }
+
+  &.green {
+    div {
+      border: 3px solid $color-green-a;
+      border-color: $color-green-a transparent transparent transparent;
+    }
+  }
 }
 .lds-ring div {
   box-sizing: border-box;

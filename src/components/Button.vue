@@ -1,18 +1,29 @@
 <template>
   <button
     class="btn"
-    :class="[this.class, { 'btn--grey': this.color === 'grey' }]"
+    :class="[
+      this.class,
+      { 'btn--grey': this.color === 'grey', 'btn--loading': this.isLoading }
+    ]"
   >
-    <slot />
+    <loading-animation v-if="isLoading" class="sm green mr-1" />
+    <slot v-if="!this.isLoading" />
+    <span v-else>Loading...</span>
   </button>
 </template>
 
 <script>
+import LoadingAnimation from './LoadingAnimation.vue';
 export default {
+  components: { LoadingAnimation },
   name: 'Button',
   props: {
     class: String,
-    color: String
+    color: String,
+    isLoading: {
+      type: Boolean,
+      default: false
+    }
   }
 };
 </script>
@@ -40,6 +51,12 @@ export default {
     color: $color-green-a;
     font-weight: 700;
     border: 1px solid #f6f5f5;
+  }
+
+  &--loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &:active {
